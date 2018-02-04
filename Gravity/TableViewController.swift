@@ -9,7 +9,6 @@ class TableViewController: UITableViewController {
 
     let model = ["spotify"]
 
-    let cellSpacingHeight: CGFloat = 5
     let cellIdentifier = "SubscriptionCell"
 
     override func viewDidLoad() {
@@ -62,9 +61,9 @@ class TableViewController: UITableViewController {
 
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return cellSpacingHeight
-    }
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return cellSpacingHeight
+//    }
     
     var selectedIndex = -1
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -81,6 +80,26 @@ class TableViewController: UITableViewController {
             selectedIndex = indexPath.section
         }
         tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+        headerView.backgroundColor = subscriptions[section].color
+        return headerView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+//    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+//        footerView.backgroundColor = UIColor.lightGray
+//        return footerView
+//    }
+//
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
 
     /*

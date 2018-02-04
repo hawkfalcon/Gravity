@@ -17,6 +17,9 @@
 		5475902320268B430045DB8B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475902220268B430045DB8B /* Subscription.swift */; };
 		54759025202692CF0045DB8B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54759024202692CF0045DB8B /* Color.swift */; };
 		54C3B10C2026AA3400459229 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B10B2026AA3400459229 /* FriendCell.swift */; };
+		54C3B10E2026BF9400459229 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B10D2026BF9400459229 /* AddViewController.swift */; };
+		54C3B1102026BFBD00459229 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B10F2026BFBD00459229 /* AddCell.swift */; };
+		54C3B1122026C79900459229 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B1112026C79900459229 /* SubscriptionViewController.swift */; };
 		54F9E93320269AFB00AB139C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54F9E93220269AFB00AB139C /* GoogleService-Info.plist */; };
 		8412326E5B3F32713A6DF1DB /* libPods-Gravity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A29203DD5D548EFC599E6B9 /* libPods-Gravity.a */; };
 /* End PBXBuildFile section */
@@ -36,6 +39,9 @@
 		5475902220268B430045DB8B /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		54759024202692CF0045DB8B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		54C3B10B2026AA3400459229 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		54C3B10D2026BF9400459229 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		54C3B10F2026BFBD00459229 /* AddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
+		54C3B1112026C79900459229 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		54F9E93220269AFB00AB139C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5A29203DD5D548EFC599E6B9 /* libPods-Gravity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gravity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -79,12 +85,15 @@
 				545ADA1A20266E70009C0EB9 /* Assets.xcassets */,
 				545ADA1C20266E70009C0EB9 /* LaunchScreen.storyboard */,
 				545ADA1F20266E70009C0EB9 /* Info.plist */,
-				545ADA25202677F8009C0EB9 /* TableViewController.swift */,
 				545ADA2720267A3A009C0EB9 /* SubscriptionCell.swift */,
 				5475902220268B430045DB8B /* Subscription.swift */,
 				54759024202692CF0045DB8B /* Color.swift */,
 				54F9E93220269AFB00AB139C /* GoogleService-Info.plist */,
 				54C3B10B2026AA3400459229 /* FriendCell.swift */,
+				545ADA25202677F8009C0EB9 /* TableViewController.swift */,
+				54C3B10D2026BF9400459229 /* AddViewController.swift */,
+				54C3B1112026C79900459229 /* SubscriptionViewController.swift */,
+				54C3B10F2026BFBD00459229 /* AddCell.swift */,
 			);
 			path = Gravity;
 			sourceTree = "<group>";
@@ -234,8 +243,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54C3B1122026C79900459229 /* SubscriptionViewController.swift in Sources */,
 				545ADA26202677F8009C0EB9 /* TableViewController.swift in Sources */,
+				54C3B1102026BFBD00459229 /* AddCell.swift in Sources */,
 				54C3B10C2026AA3400459229 /* FriendCell.swift in Sources */,
+				54C3B10E2026BF9400459229 /* AddViewController.swift in Sources */,
 				545ADA2820267A3A009C0EB9 /* SubscriptionCell.swift in Sources */,
 				5475902320268B430045DB8B /* Subscription.swift in Sources */,
 				54759025202692CF0045DB8B /* Color.swift in Sources */,
