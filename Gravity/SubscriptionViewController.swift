@@ -8,12 +8,22 @@
 
 import UIKit
 
-class SubscriptionViewController: UITableViewController {
+class SubscriptionViewController: UITableViewController, UITextFieldDelegate {
 
     var subscription: Subscription!
     
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var price: UITextField!
+    @IBOutlet weak var date: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        name.text = subscription.name
+        icon.image = UIImage(named: subscription.icon)
+        date.text = "02/04/2018"
+        price.text = "\(subscription.price)"
+        price.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -22,9 +32,20 @@ class SubscriptionViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: - Table view data source
@@ -51,13 +72,12 @@ class SubscriptionViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support conditional editing of the table view.
+    /*// Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return indexPath.section != 0
     }
-    */
+*/
 
     /*
     // Override to support editing the table view.

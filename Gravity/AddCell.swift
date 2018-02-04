@@ -22,5 +22,18 @@ class AddCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    override var frame: CGRect {
+        get {
+            return super.frame
+        }
+        set (newFrame) {
+            let inset: CGFloat = 5
+            var frame = newFrame
+            frame.origin.x += inset
+            frame.size.width -= 2 * inset
+            super.frame = frame
+        }
+    }
 
 }
