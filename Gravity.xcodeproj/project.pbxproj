@@ -22,6 +22,7 @@
 		54C3B1122026C79900459229 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B1112026C79900459229 /* SubscriptionViewController.swift */; };
 		54C3B1142026F39300459229 /* BigProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B1132026F39300459229 /* BigProfileCell.swift */; };
 		54C3B1162026F82B00459229 /* FriendExpandedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B1152026F82B00459229 /* FriendExpandedCell.swift */; };
+		54DC43312027846400AB94FA /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC43302027846400AB94FA /* FBLoginViewController.swift */; };
 		54F9E93320269AFB00AB139C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54F9E93220269AFB00AB139C /* GoogleService-Info.plist */; };
 		8412326E5B3F32713A6DF1DB /* libPods-Gravity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A29203DD5D548EFC599E6B9 /* libPods-Gravity.a */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		54C3B1112026C79900459229 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		54C3B1132026F39300459229 /* BigProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigProfileCell.swift; sourceTree = "<group>"; };
 		54C3B1152026F82B00459229 /* FriendExpandedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendExpandedCell.swift; sourceTree = "<group>"; };
+		54DC43302027846400AB94FA /* FBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
 		54F9E93220269AFB00AB139C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5A29203DD5D548EFC599E6B9 /* libPods-Gravity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gravity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 				54C3B1132026F39300459229 /* BigProfileCell.swift */,
 				54C3B1152026F82B00459229 /* FriendExpandedCell.swift */,
 				545ADA2720267A3A009C0EB9 /* SubscriptionCell.swift */,
+				54DC43302027846400AB94FA /* FBLoginViewController.swift */,
 			);
 			path = Gravity;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			files = (
 				54C3B1122026C79900459229 /* SubscriptionViewController.swift in Sources */,
 				545ADA26202677F8009C0EB9 /* TableViewController.swift in Sources */,
+				54DC43312027846400AB94FA /* FBLoginViewController.swift in Sources */,
 				54C3B1142026F39300459229 /* BigProfileCell.swift in Sources */,
 				54C3B1102026BFBD00459229 /* AddCell.swift in Sources */,
 				54C3B10C2026AA3400459229 /* FriendCell.swift in Sources */,
