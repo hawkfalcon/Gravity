@@ -18,5 +18,13 @@ class SubscriptionCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setCollectionViewDataSourceDelegate<D: UICollectionViewDataSource & UICollectionViewDelegate>(_ dataSourceDelegate: D, forRow row: Int) {
+        
+        friends.delegate = dataSourceDelegate
+        friends.dataSource = dataSourceDelegate
+        friends.tag = row
+        friends.reloadData()
+    }
 
 }

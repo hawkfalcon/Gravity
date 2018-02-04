@@ -7,6 +7,9 @@ class TableViewController: UITableViewController {
         Subscription(name: "Spotify", icon: "spotify", color: Color(r: 30, g: 215, b: 96).uiColor(), price: 12.0, time: "mo")
     ]
 
+    let model = ["spotify"]
+
+    let cellSpacingHeight: CGFloat = 5
     let cellIdentifier = "SubscriptionCell"
 
     override func viewDidLoad() {
@@ -27,11 +30,11 @@ class TableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return subscriptions.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return subscriptions.count
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,7 +43,7 @@ class TableViewController: UITableViewController {
             fatalError("Cell not found")
         }
         
-        let sub = subscriptions[indexPath.row]
+        let sub = subscriptions[indexPath.section]
         cell.label.text = sub.name
         cell.icon.image = UIImage(named: sub.icon)
         //cell.backgroundColor = sub.color
@@ -50,12 +53,19 @@ class TableViewController: UITableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let sub = subscriptions[indexPath.row]
-//
-//        cell.backgroundColor = sub.color
-//    }
-//
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        guard let cell = cell as? SubscriptionCell else {
+            fatalError("Cell not found")
+        }
+        cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110.0
     }
@@ -105,4 +115,17 @@ class TableViewController: UITableViewController {
     }
     */
 
+}
+
+extension TableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendCell",
+                                                      for: indexPath)
+        cell.backgroundColor = UIColor.blue
+        return cell
+    }
 }
