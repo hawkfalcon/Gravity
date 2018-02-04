@@ -3,64 +3,25 @@ import FirebaseDatabase
 
 class TableViewController: UITableViewController {
     
-//    let subscriptions = [
-//        Subscription(name: "Netflix", icon: "netflix", color: Color(r: 185, g: 9, b: 11).uiColor(), price: 10.0, time: "mo"),
-//        Subscription(name: "Spotify", icon: "spotify", color: Color(r: 30, g: 215, b: 96).uiColor(), price: 12.0, time: "mo")
-//    ]
-    
-    var subscriptions = [Subscription]()
+    var subscriptions = [
+        Subscription(name: "Netflix", icon: "netflix", color: Color(r: 185, g: 9, b: 11).uiColor(), cost: 9.99, type: "mo"),
+        Subscription(name: "Spotify", icon: "spotify", color: Color(r: 30, g: 215, b: 96).uiColor(), cost: 4.99, type: "mo")
+        ]
 
     let cellIdentifier = "SubscriptionCell"
 
     override func viewDidLoad() {
-        
-        FIRDatabase.database().reference().child("subscriptions").observeSingleEvent(of: .value, with: { (snapshot) in
-            if let subscriptiondict = snapshot.value as? NSDictionary {
-                print(subscriptiondict)
-                for entry in subscriptiondict.allValues {
-                    if let subscriptionvalue = entry as? NSDictionary{
-                        self.subscriptions.append(
-                            Subscription(
-                                name: subscriptionvalue["name"] as? String ?? "COMPANY NAME",
-                                icon: subscriptionvalue["icon"] as? String ?? "ICON",
-                                color: Color(
-                                    r: subscriptionvalue["r"] as! CGFloat,
-                                    g: subscriptionvalue["g"] as! CGFloat,
-                                    b: subscriptionvalue["b"] as! CGFloat
-                                ).uiColor(),
-                                cost: subscriptionvalue["cost"] as? Float ?? -1.0,
-                                type: subscriptionvalue["type"] as? String ?? "TYPE"))
-                    }
-                    
-                }
-                
-                
-                self.tableView.reloadData()
-                
-                
-                
-            }
-            else {
-                fatalError("No snapshot values :(")
-            }
-        }, withCancel: { error in
-            print(error.localizedDescription)
-            
-        }
-        )
-        print(subscriptions.count)
-        // Uncomment the following line to preserve selection between presentations
+                // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         super.viewDidLoad()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return subscriptions.count
@@ -73,7 +34,7 @@ class TableViewController: UITableViewController {
         }
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row != 0 {
@@ -211,11 +172,14 @@ class TableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+  */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let dest = segue.destination as? AddViewController {
+            dest.mainVC = self
+        }
     }
-    */
+ 
 
 }
 

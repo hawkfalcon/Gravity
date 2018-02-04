@@ -16,22 +16,31 @@ class SubscriptionViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var price: UITextField!
     @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var frequency: UITextField!
+    
+    var mainVC: TableViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         name.text = subscription.name
-        icon.image = UIImage(named: subscription.icon)
+        icon.image = UIImage(named: subscription.name.lowercased().replacingOccurrences(of: " ", with: ""))
         date.text = "02/04/2018"
         price.text = "\(subscription.cost)"
+        frequency.text = subscription.type
         price.delegate = self
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    @IBAction func done(_ sender: Any) {
+        mainVC?.subscriptions.append(subscription)
 
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
     }
@@ -47,7 +56,15 @@ class SubscriptionViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+    }
 
+    
     // MARK: - Table view data source
     
     

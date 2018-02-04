@@ -7,17 +7,54 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class AddViewController: UITableViewController {
-    let subscriptionDefaults = [
-        Subscription(name: "Netflix", icon: "netflix", color: Color(r: 185, g: 9, b: 11).uiColor(), cost: 10.0, type: "mo"),
-        Subscription(name: "Spotify", icon: "spotify", color: Color(r: 30, g: 215, b: 96).uiColor(), cost: 12.0, type: "mo")
-    ]
+    var subscriptionDefaults = [Subscription]()
+    
+    var mainVC: TableViewController?
+
     let cellIdentifier = "AddCell"
 
     override func viewDidLoad() {
+    
+        FIRDatabase.database().reference().child("subscriptions").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let subscriptiondict = snapshot.value as? NSDictionary {
+                for entry in subscriptiondict.allValues {
+                    if let subscriptionvalue = entry as? NSDictionary{
+                        self.subscriptionDefaults.append(
+                            Subscription(
+                                name: subscriptionvalue["name"] as? String ?? "COMPANY NAME",
+                                icon: subscriptionvalue["icon"] as? String ?? "ICON",
+                                color: Color(
+                                    r: subscriptionvalue["r"] as! CGFloat,
+                                    g: subscriptionvalue["g"] as! CGFloat,
+                                    b: subscriptionvalue["b"] as! CGFloat
+                                    ).uiColor(),
+                                cost: subscriptionvalue["cost"] as? Float ?? -1.0,
+                                type: subscriptionvalue["type"] as? String ?? "TYPE"))
+                    }
+                    
+                }
+                
+                
+                self.tableView.reloadData()
+                
+                
+                
+            }
+            else {
+                fatalError("No snapshot values :(")
+            }
+        }, withCancel: { error in
+            print(error.localizedDescription)
+            
+        }
+        )
         super.viewDidLoad()
+    
     }
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return subscriptionDefaults.count
@@ -27,13 +64,14 @@ class AddViewController: UITableViewController {
         return 1
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        self.performSegue(withIdentifier: "subSegue", sender: subscriptionDefaults[indexPath.section])
 //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "subSegue") {
             let destination = segue.destination as! SubscriptionViewController
+            destination.mainVC = mainVC
             if let index = tableView.indexPathForSelectedRow?.section {
                 destination.subscription = subscriptionDefaults[index]
             }
@@ -48,7 +86,7 @@ class AddViewController: UITableViewController {
         
         let sub = subscriptionDefaults[indexPath.section]
         cell.name.text = sub.name
-        cell.icon.image = UIImage(named: sub.icon)
+        cell.icon.image = UIImage(named: sub.name.lowercased().replacingOccurrences(of: " ", with: ""))
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = sub.color.cgColor
         cell.layer.cornerRadius = 8
@@ -56,7 +94,7 @@ class AddViewController: UITableViewController {
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
