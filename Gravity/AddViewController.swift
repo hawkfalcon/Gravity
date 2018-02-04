@@ -10,8 +10,8 @@ import UIKit
 
 class AddViewController: UITableViewController {
     let subscriptionDefaults = [
-        Subscription(name: "Netflix", icon: "netflix", color: Color(r: 185, g: 9, b: 11).uiColor(), price: 10.0, time: "mo"),
-        Subscription(name: "Spotify", icon: "spotify", color: Color(r: 30, g: 215, b: 96).uiColor(), price: 12.0, time: "mo")
+        Subscription(name: "Netflix", icon: "netflix", color: Color(r: 185, g: 9, b: 11).uiColor(), cost: 10.0, type: "mo"),
+        Subscription(name: "Spotify", icon: "spotify", color: Color(r: 30, g: 215, b: 96).uiColor(), cost: 12.0, type: "mo")
     ]
     let cellIdentifier = "AddCell"
 

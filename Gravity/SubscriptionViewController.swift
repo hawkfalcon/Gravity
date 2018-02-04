@@ -22,7 +22,7 @@ class SubscriptionViewController: UITableViewController, UITextFieldDelegate {
         name.text = subscription.name
         icon.image = UIImage(named: subscription.icon)
         date.text = "02/04/2018"
-        price.text = "\(subscription.price)"
+        price.text = "\(subscription.cost)"
         price.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
