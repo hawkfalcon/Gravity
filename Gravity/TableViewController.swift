@@ -7,8 +7,11 @@ class TableViewController: UITableViewController {
         Subscription(name: "Netflix", icon: "netflix", color: Color(r: 185, g: 9, b: 11).uiColor(), cost: 9.99, type: "mo"),
         Subscription(name: "Spotify", icon: "spotify", color: Color(r: 30, g: 215, b: 96).uiColor(), cost: 4.99, type: "mo")
         ]
+    
+    var friends = [Int]()
 
     let cellIdentifier = "SubscriptionCell"
+    @IBOutlet weak var total: UIBarButtonItem!
 
     override func viewDidLoad() {
                 // Uncomment the following line to preserve selection between presentations
@@ -16,10 +19,25 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        for _ in 0...100 {
+            friends.append(Int(arc4random_uniform(9)) + 1)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        var monthly: Float = 0.0
+        var yearly: Float = 0.0
+        for sub in subscriptions {
+            if sub.type == "mo" {
+                monthly += sub.cost
+            }
+            else {
+                yearly += sub.cost
+            }
+        }
+        let totalval = (monthly + yearly / 12.0).rounded(toPlaces: 2)
+        total.title = "Total: $\(totalval)/mo"
         tableView.reloadData()
     }
 
@@ -185,7 +203,7 @@ class TableViewController: UITableViewController {
 
 extension TableViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return friends[section]
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -212,5 +230,13 @@ extension TableViewController: UICollectionViewDelegate, UICollectionViewDataSou
         cell.profile.setRounded()
         
         return cell
+    }
+}
+
+extension Float {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Float {
+        let divisor = pow(10.0, Float(places))
+        return (self * divisor).rounded() / divisor
     }
 }

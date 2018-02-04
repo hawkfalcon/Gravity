@@ -37,10 +37,7 @@ class AddViewController: UITableViewController {
                     
                 }
                 
-                
                 self.tableView.reloadData()
-                
-                
                 
             }
             else {
@@ -51,6 +48,8 @@ class AddViewController: UITableViewController {
             
         }
         )
+        subscriptionDefaults.append(Subscription(name: "Custom", icon: "none", color: Color(r: 100, g: 100, b: 100).uiColor(), cost: 0.0, type: "mo"))
+
         super.viewDidLoad()
     
     }
