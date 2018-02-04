@@ -26,5 +26,4 @@ class SubscriptionCell: UITableViewCell {
         friends.tag = row
         friends.reloadData()
     }
-
 }

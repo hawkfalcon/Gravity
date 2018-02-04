@@ -48,7 +48,7 @@ class TableViewController: UITableViewController {
         cell.icon.image = UIImage(named: sub.icon)
         //cell.backgroundColor = sub.color
         cell.price.text = "\(sub.price)"
-        cell.time.text = sub.time
+        cell.time.text = "/\(sub.time)"
 
         return cell
     }
@@ -66,8 +66,21 @@ class TableViewController: UITableViewController {
         return cellSpacingHeight
     }
     
+    var selectedIndex = -1
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110.0
+        if indexPath.row == selectedIndex {
+            return 220 //Expanded
+        }
+        return 110 //Not expanded
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if selectedIndex == indexPath.section {
+            selectedIndex = -1
+        } else {
+            selectedIndex = indexPath.section
+        }
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
     /*
@@ -90,12 +103,10 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
+//    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+//
+//    }
 
     /*
     // Override to support conditional rearranging of the table view.
@@ -119,13 +130,18 @@ class TableViewController: UITableViewController {
 
 extension TableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendCell",
-                                                      for: indexPath)
-        cell.backgroundColor = UIColor.blue
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendCell", for: indexPath) as? FriendCell else {
+            fatalError("Cell not found")
+        }
+        
+        let image = UIImage(named: "profile")
+        cell.profile.image = image
+        cell.profile.setRounded()
+        
         return cell
     }
 }
