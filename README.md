@@ -1,5 +1,4 @@
 # Gravity
 A SLOHacks Project
 
-The purpose of Gravity, an iOS application is to assist a user in keeping track of payment deadlines for subscription services
-while also integrating a social media aspect. 
+Gravity is a mobile application that manages subscriptions and recurring payments allowing users to set spending goals and generate statistics for spending data. The ability to compete with friends and learn tips on how to save money creates a perfect environment for helping college students spend less. 
