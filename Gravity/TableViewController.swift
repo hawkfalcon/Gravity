@@ -2,7 +2,11 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    let subscriptions = ["Netflix", "Spotify"]
+    let subscriptions = [
+        Subscription(name: "Netflix", icon: "netflix", color: Color(r: 185, g: 9, b: 11).uiColor(), price: 10.0, time: "mo"),
+        Subscription(name: "Spotify", icon: "spotify", color: Color(r: 30, g: 215, b: 96).uiColor(), price: 12.0, time: "mo")
+    ]
+
     let cellIdentifier = "SubscriptionCell"
 
     override func viewDidLoad() {
@@ -36,8 +40,24 @@ class TableViewController: UITableViewController {
             fatalError("Cell not found")
         }
         
-        cell.textLabel?.text = subscriptions[indexPath.row]
+        let sub = subscriptions[indexPath.row]
+        cell.label.text = sub.name
+        cell.icon.image = UIImage(named: sub.icon)
+        //cell.backgroundColor = sub.color
+        cell.price.text = "\(sub.price)"
+        cell.time.text = sub.time
+
         return cell
+    }
+    
+//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        let sub = subscriptions[indexPath.row]
+//
+//        cell.backgroundColor = sub.color
+//    }
+//
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110.0
     }
 
     /*
