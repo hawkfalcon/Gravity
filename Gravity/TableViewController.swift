@@ -1,11 +1,11 @@
 import UIKit
-import FirebaseDatabase
+import ViewAnimator
 
 class TableViewController: UITableViewController {
     
     var subscriptions = [
-        Subscription(name: "Netflix", icon: "netflix", color: Color(r: 185, g: 9, b: 11).uiColor(), cost: 9.99, type: "mo"),
-        Subscription(name: "Spotify", icon: "spotify", color: Color(r: 30, g: 215, b: 96).uiColor(), cost: 4.99, type: "mo")
+        Subscription(name: "Netflix", icon: "netflix", color: UIColor(red: 185, green: 9, blue: 11), cost: 9.99, type: "mo"),
+        Subscription(name: "Spotify", icon: "spotify", color: UIColor(red: 30, green: 215, blue: 96), cost: 4.99, type: "mo")
         ]
     
     var friends = [Int]()
@@ -14,31 +14,28 @@ class TableViewController: UITableViewController {
     @IBOutlet weak var total: UIBarButtonItem!
 
     override func viewDidLoad() {
-                // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        super.viewDidLoad()
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        for _ in 0...100 {
-            friends.append(Int(arc4random_uniform(9)) + 1)
+        for i in 0...7 {
+            friends.append(i)
         }
+        super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        total.title = "Total: $\(calculateTotal())/mo"
+        tableView.reloadData()
+    }
+    
+    func calculateTotal() -> Float {
         var monthly: Float = 0.0
         var yearly: Float = 0.0
         for sub in subscriptions {
             if sub.type == "mo" {
                 monthly += sub.cost
-            }
-            else {
+            } else {
                 yearly += sub.cost
             }
         }
-        let totalval = (monthly + yearly / 12.0).rounded(toPlaces: 2)
-        total.title = "Total: $\(totalval)/mo"
-        tableView.reloadData()
+        return (monthly + yearly / 12.0).rounded(toPlaces: 2)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -170,7 +167,8 @@ class TableViewController: UITableViewController {
 
     /*
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle:
+     UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -204,7 +202,6 @@ class TableViewController: UITableViewController {
             dest.mainVC = self
         }
     }
- 
 
 }
 
@@ -216,7 +213,8 @@ extension TableViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView.tag != 0 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BigProfile", for: indexPath) as? BigProfileCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
+                "BigProfile", for: indexPath) as? BigProfileCell else {
                 fatalError("Cell not found")
             }
             
@@ -228,7 +226,8 @@ extension TableViewController: UICollectionViewDelegate, UICollectionViewDataSou
             return cell
         }
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendCell", for: indexPath) as? FriendCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
+            "FriendCell", for: indexPath) as? FriendCell else {
             fatalError("Cell not found")
         }
         
@@ -242,7 +241,7 @@ extension TableViewController: UICollectionViewDelegate, UICollectionViewDataSou
 
 extension Float {
     /// Rounds the double to decimal places value
-    func rounded(toPlaces places:Int) -> Float {
+    func rounded(toPlaces places: Int) -> Float {
         let divisor = pow(10.0, Float(places))
         return (self * divisor).rounded() / divisor
     }

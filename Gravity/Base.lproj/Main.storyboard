@@ -167,7 +167,7 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Gravity" id="vCL-iW-Hqt">
-                        <barButtonItem key="rightBarButtonItem" title="Login" style="plain" id="85j-M8-P4P">
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="85j-M8-P4P">
                             <connections>
                                 <action selector="login:" destination="6Bz-DO-Ruv" id="T8s-Bh-Rko"/>
                             </connections>

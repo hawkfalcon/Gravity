@@ -23,7 +23,6 @@ class FBLoginViewController: UIViewController {
     @IBAction func test(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
-    
 
     /*
     // MARK: - Navigation
@@ -34,5 +33,4 @@ class FBLoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

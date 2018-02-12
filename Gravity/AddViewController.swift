@@ -17,20 +17,19 @@ class AddViewController: UITableViewController {
     let cellIdentifier = "AddCell"
 
     override func viewDidLoad() {
-    
         FIRDatabase.database().reference().child("subscriptions").observeSingleEvent(of: .value, with: { (snapshot) in
             if let subscriptiondict = snapshot.value as? NSDictionary {
                 for entry in subscriptiondict.allValues {
-                    if let subscriptionvalue = entry as? NSDictionary{
+                    if let subscriptionvalue = entry as? NSDictionary {
                         self.subscriptionDefaults.append(
                             Subscription(
                                 name: subscriptionvalue["name"] as? String ?? "COMPANY NAME",
                                 icon: subscriptionvalue["icon"] as? String ?? "ICON",
-                                color: Color(
-                                    r: subscriptionvalue["r"] as! CGFloat,
-                                    g: subscriptionvalue["g"] as! CGFloat,
-                                    b: subscriptionvalue["b"] as! CGFloat
-                                    ).uiColor(),
+                                color: UIColor(
+                                    red: subscriptionvalue["r"] as? CGFloat ?? 1.0,
+                                    green: subscriptionvalue["g"] as? CGFloat ?? 1.0,
+                                    blue: subscriptionvalue["b"] as? CGFloat ?? 1.0
+                                ),
                                 cost: subscriptionvalue["cost"] as? Float ?? -1.0,
                                 type: subscriptionvalue["type"] as? String ?? "TYPE"))
                     }
@@ -39,8 +38,7 @@ class AddViewController: UITableViewController {
                 
                 self.tableView.reloadData()
                 
-            }
-            else {
+            } else {
                 fatalError("No snapshot values :(")
             }
         }, withCancel: { error in
@@ -48,12 +46,12 @@ class AddViewController: UITableViewController {
             
         }
         )
-        subscriptionDefaults.append(Subscription(name: "Custom", icon: "none", color: Color(r: 100, g: 100, b: 100).uiColor(), cost: 0.0, type: "mo"))
+        subscriptionDefaults.append(Subscription(name: "Custom", icon: "none", color:
+            UIColor(red: 100, green: 100, blue: 100, alpha: 1.0), cost: 0.0, type: "mo"))
 
         super.viewDidLoad()
     
     }
-    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return subscriptionDefaults.count
@@ -68,8 +66,11 @@ class AddViewController: UITableViewController {
 //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "subSegue") {
-            let destination = segue.destination as! SubscriptionViewController
+        if segue.identifier == "subSegue" {
+            guard let destination = segue.destination as? SubscriptionViewController else {
+                print("Error loading SubscriptionViewController")
+                return
+            }
             destination.mainVC = mainVC
             if let index = tableView.indexPathForSelectedRow?.section {
                 destination.subscription = subscriptionDefaults[index]
@@ -104,5 +105,11 @@ class AddViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 5
+    }
+}
+
+extension UIColor {
+    convenience init(red: CGFloat, green: CGFloat, blue: CGFloat) {
+        self.init(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1.0)
     }
 }

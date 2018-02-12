@@ -15,7 +15,6 @@
 		545ADA2820267A3A009C0EB9 /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545ADA2720267A3A009C0EB9 /* SubscriptionCell.swift */; };
 		5475902120267EA70045DB8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5475902020267EA70045DB8B /* Default-568h@2x.png */; };
 		5475902320268B430045DB8B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475902220268B430045DB8B /* Subscription.swift */; };
-		54759025202692CF0045DB8B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54759024202692CF0045DB8B /* Color.swift */; };
 		54C3B10C2026AA3400459229 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B10B2026AA3400459229 /* FriendCell.swift */; };
 		54C3B10E2026BF9400459229 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B10D2026BF9400459229 /* AddViewController.swift */; };
 		54C3B1102026BFBD00459229 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B10F2026BFBD00459229 /* AddCell.swift */; };
@@ -24,7 +23,7 @@
 		54C3B1162026F82B00459229 /* FriendExpandedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B1152026F82B00459229 /* FriendExpandedCell.swift */; };
 		54DC43312027846400AB94FA /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC43302027846400AB94FA /* FBLoginViewController.swift */; };
 		54F9E93320269AFB00AB139C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54F9E93220269AFB00AB139C /* GoogleService-Info.plist */; };
-		8412326E5B3F32713A6DF1DB /* libPods-Gravity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A29203DD5D548EFC599E6B9 /* libPods-Gravity.a */; };
+		ACE211ABA6DE53B8B3CCAD63 /* Pods_Gravity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8405A319A0984AB605ED84B /* Pods_Gravity.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +39,6 @@
 		545ADA2720267A3A009C0EB9 /* SubscriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
 		5475902020267EA70045DB8B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5475902220268B430045DB8B /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
-		54759024202692CF0045DB8B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		54C3B10B2026AA3400459229 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		54C3B10D2026BF9400459229 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		54C3B10F2026BFBD00459229 /* AddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
@@ -49,7 +47,7 @@
 		54C3B1152026F82B00459229 /* FriendExpandedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendExpandedCell.swift; sourceTree = "<group>"; };
 		54DC43302027846400AB94FA /* FBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
 		54F9E93220269AFB00AB139C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5A29203DD5D548EFC599E6B9 /* libPods-Gravity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gravity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8405A319A0984AB605ED84B /* Pods_Gravity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gravity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8412326E5B3F32713A6DF1DB /* libPods-Gravity.a in Frameworks */,
+				ACE211ABA6DE53B8B3CCAD63 /* Pods_Gravity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +90,6 @@
 				545ADA1C20266E70009C0EB9 /* LaunchScreen.storyboard */,
 				545ADA1F20266E70009C0EB9 /* Info.plist */,
 				5475902220268B430045DB8B /* Subscription.swift */,
-				54759024202692CF0045DB8B /* Color.swift */,
 				54F9E93220269AFB00AB139C /* GoogleService-Info.plist */,
 				545ADA25202677F8009C0EB9 /* TableViewController.swift */,
 				54C3B10D2026BF9400459229 /* AddViewController.swift */,
@@ -119,7 +116,7 @@
 		CA7EBE2BB97F175926AF9C2D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5A29203DD5D548EFC599E6B9 /* libPods-Gravity.a */,
+				D8405A319A0984AB605ED84B /* Pods_Gravity.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -137,6 +134,7 @@
 				545ADA0E20266E70009C0EB9 /* Resources */,
 				CAD889C282FA5E9B3FA73530 /* [CP] Embed Pods Frameworks */,
 				829AA56F6D54DC60364DB021 /* [CP] Copy Pods Resources */,
+				54AF1A0220323E6C009C2D36 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -197,6 +195,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		54AF1A0220323E6C009C2D36 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 		829AA56F6D54DC60364DB021 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,9 +229,26 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Gravity/Pods-Gravity-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BulletinBoard/BulletinBoard.framework",
+				"${BUILT_PRODUCTS_DIR}/DateTimePicker/DateTimePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/HGPlaceholders/HGPlaceholders.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/RAMReel/RAMReel.framework",
+				"${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework",
+				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BulletinBoard.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTimePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HGPlaceholders.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMReel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkeletonView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -262,7 +290,6 @@
 				54C3B1162026F82B00459229 /* FriendExpandedCell.swift in Sources */,
 				545ADA2820267A3A009C0EB9 /* SubscriptionCell.swift in Sources */,
 				5475902320268B430045DB8B /* Subscription.swift in Sources */,
-				54759025202692CF0045DB8B /* Color.swift in Sources */,
 				545ADA1420266E70009C0EB9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

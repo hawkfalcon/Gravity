@@ -14,7 +14,8 @@ class FriendExpandedCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCollectionViewDataSourceDelegate<D: UICollectionViewDataSource & UICollectionViewDelegate>(_ dataSourceDelegate: D, forRow row: Int) {
+    func setCollectionViewDataSourceDelegate<D: UICollectionViewDataSource &
+        UICollectionViewDelegate>(_ dataSourceDelegate: D, forRow row: Int) {
         
         friends.delegate = dataSourceDelegate
         friends.dataSource = dataSourceDelegate
