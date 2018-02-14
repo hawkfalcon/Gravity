@@ -9,10 +9,10 @@
 import UIKit
 import FirebaseDatabase
 
-class AddViewController: UITableViewController {
-    var subscriptionDefaults = [Subscription]()
+class AddSubscriptionViewController: UITableViewController {
+    var subscriptionDefaults = [UserSubscriptionModel]()
     
-    var mainVC: TableViewController?
+    var mainVC: SubscriptionsViewController?
 
     let cellIdentifier = "AddCell"
 
@@ -22,7 +22,7 @@ class AddViewController: UITableViewController {
                 for entry in subscriptiondict.allValues {
                     if let subscriptionvalue = entry as? NSDictionary {
                         self.subscriptionDefaults.append(
-                            Subscription(
+                            UserSubscriptionModel(
                                 name: subscriptionvalue["name"] as? String ?? "COMPANY NAME",
                                 icon: subscriptionvalue["icon"] as? String ?? "ICON",
                                 color: UIColor(
@@ -31,7 +31,8 @@ class AddViewController: UITableViewController {
                                     blue: subscriptionvalue["b"] as? CGFloat ?? 1.0
                                 ),
                                 cost: subscriptionvalue["cost"] as? Float ?? -1.0,
-                                type: subscriptionvalue["type"] as? String ?? "TYPE"))
+                                type: subscriptionvalue["type"] as? String ?? "TYPE"
+                        ))
                     }
                     
                 }
@@ -46,7 +47,7 @@ class AddViewController: UITableViewController {
             
         }
         )
-        subscriptionDefaults.append(Subscription(name: "Custom", icon: "none", color:
+        subscriptionDefaults.append(UserSubscriptionModel(name: "Custom", icon: "none", color:
             UIColor(red: 100, green: 100, blue: 100, alpha: 1.0), cost: 0.0, type: "mo"))
 
         super.viewDidLoad()
@@ -67,7 +68,7 @@ class AddViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "subSegue" {
-            guard let destination = segue.destination as? SubscriptionViewController else {
+            guard let destination = segue.destination as? EditSubscriptionViewController else {
                 print("Error loading SubscriptionViewController")
                 return
             }

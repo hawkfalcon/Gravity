@@ -1,22 +1,28 @@
 import UIKit
 import ViewAnimator
 
-class TableViewController: UITableViewController {
+class SubscriptionsViewController: UITableViewController {
     
     var subscriptions = [
-        Subscription(name: "Netflix", icon: "netflix", color: UIColor(red: 185, green: 9, blue: 11), cost: 9.99, type: "mo"),
-        Subscription(name: "Spotify", icon: "spotify", color: UIColor(red: 30, green: 215, blue: 96), cost: 4.99, type: "mo")
+        UserSubscriptionModel(name: "Netflix", icon: "netflix", color:
+            UIColor(red: 185, green: 9, blue: 11), cost: 9.99, type: "mo"),
+        UserSubscriptionModel(name: "Spotify", icon: "spotify", color:
+            UIColor(red: 30, green: 215, blue: 96), cost: 4.99, type: "mo")
         ]
     
-    var friends = [Int]()
-
     let cellIdentifier = "SubscriptionCell"
     @IBOutlet weak var total: UIBarButtonItem!
 
     override func viewDidLoad() {
-        for i in 0...7 {
-            friends.append(i)
-        }
+        subscriptions[0].friends = [
+            FriendModel(first: "Test", last: "Test", image: "profile1"),
+            FriendModel(first: "Test2", last: "Test2", image: "profile2")
+        ]
+        
+        subscriptions[1].friends = [
+            FriendModel(first: "T", last: "T", image: "profile")
+        ]
+                
         super.viewDidLoad()
     }
     
@@ -52,37 +58,29 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row != 0 {
-            return tableView.dequeueReusableCell(withIdentifier: "largeCell", for: indexPath)
-        }
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? SubscriptionCell else {
-            fatalError("Cell not found")
-        }
-        
-        let sub = subscriptions[indexPath.section]
-        cell.label.text = sub.name
-        
-        cell.icon.image = UIImage(named: sub.name.lowercased().replacingOccurrences(of: " ", with: ""))
-        cell.price.text = "$\(sub.cost)"
-        cell.time.text = "/\(sub.type)"
+        var subscription = subscriptions[indexPath.section]
 
-        return cell
+        var subscriptionSource: TableViewSource = subscription
+        if indexPath.row != 0 {
+            subscriptionSource = UserFriendsModel(friends: subscription.friends)
+        }
+        
+        return subscriptionSource.cellForTableView(tableView: tableView, atIndexPath: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row != 0 {
-            guard let cell = cell as? FriendExpandedCell else {
+            guard let cell = cell as? ExpandedSubscriptionCell else {
                 fatalError("Cell not found")
             }
-            cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+            cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
             return
         }
 
         guard let cell = cell as? SubscriptionCell else {
             fatalError("Cell not found")
         }
-        cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+        cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
 
     }
     
@@ -122,6 +120,7 @@ class TableViewController: UITableViewController {
             selectedIndex = indexPath.section
             if let cell = tableView.cellForRow(at: indexPath) as? SubscriptionCell {
                 cell.friends.isHidden = true
+                subscriptions[indexPath.section].current = true
             }
             tableView.beginUpdates()
             tableView.insertRows(at: [curIndexPath], with: .automatic)
@@ -198,40 +197,33 @@ class TableViewController: UITableViewController {
   */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        if let dest = segue.destination as? AddViewController {
+        if let dest = segue.destination as? AddSubscriptionViewController {
             dest.mainVC = self
         }
     }
 
 }
 
-extension TableViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SubscriptionsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return friends[section]
+        return subscriptions[collectionView.tag].friends.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView.tag != 0 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
-                "BigProfile", for: indexPath) as? BigProfileCell else {
-                fatalError("Cell not found")
-            }
-            
-            let image = UIImage(named: "profile")
-            cell.profile.image = image
-            cell.profile.setRounded()
-            cell.name.text = "Friend A"
-            
-            return cell
+        let tableCell = subscriptions[collectionView.tag]
+        let friend = tableCell.friends[indexPath.row]
+        
+        if tableCell.current {
+            return friend.cellForCollectionView(collectionView: collectionView, atIndexPath: indexPath)
         }
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
             "FriendCell", for: indexPath) as? FriendCell else {
-            fatalError("Cell not found")
+                fatalError("Cell not found")
         }
         
-        let image = UIImage(named: "profile")
+        let image = UIImage(named: friend.image)
         cell.profile.image = image
         cell.profile.setRounded()
         

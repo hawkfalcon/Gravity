@@ -1,11 +1,11 @@
 import UIKit
 
-class FriendExpandedCell: UITableViewCell {
+class ExpandedSubscriptionCell: UITableViewCell {
 
     @IBOutlet weak var friends: UICollectionView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class SubscriptionViewController: UITableViewController, UITextFieldDelegate {
+class EditSubscriptionViewController: UITableViewController, UITextFieldDelegate {
 
-    var subscription: Subscription!
+    var subscription: UserSubscriptionModel!
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var icon: UIImageView!
@@ -18,7 +18,7 @@ class SubscriptionViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var frequency: UITextField!
     
-    var mainVC: TableViewController?
+    var mainVC: SubscriptionsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +28,8 @@ class SubscriptionViewController: UITableViewController, UITextFieldDelegate {
         price.text = "\(subscription.cost)"
         frequency.text = subscription.type
         price.delegate = self
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
     @IBAction func done(_ sender: Any) {
         mainVC?.subscriptions.append(subscription)
 

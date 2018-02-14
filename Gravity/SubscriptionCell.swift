@@ -2,11 +2,12 @@ import UIKit
 
 class SubscriptionCell: UITableViewCell {
 
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var friends: UICollectionView!
+    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var icon: UIImageView!
-    @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var cost: UILabel!
+    @IBOutlet weak var type: UILabel!
+    
+    @IBOutlet weak var friends: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
