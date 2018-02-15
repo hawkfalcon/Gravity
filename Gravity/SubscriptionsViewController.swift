@@ -22,7 +22,7 @@ class SubscriptionsViewController: UITableViewController {
         subscriptions[1].friends = [
             FriendModel(first: "T", last: "T", image: "profile")
         ]
-                
+        
         super.viewDidLoad()
     }
     
@@ -58,7 +58,7 @@ class SubscriptionsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var subscription = subscriptions[indexPath.section]
+        let subscription = subscriptions[indexPath.section]
 
         var subscriptionSource: TableViewSource = subscription
         if indexPath.row != 0 {
@@ -81,7 +81,6 @@ class SubscriptionsViewController: UITableViewController {
             fatalError("Cell not found")
         }
         cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
-
     }
     
 //    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -92,7 +91,7 @@ class SubscriptionsViewController: UITableViewController {
         if indexPath.row != 0 {
             return 300
         }
-        return 100 //Not expanded
+        return 105 //Not expanded
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -136,24 +135,24 @@ class SubscriptionsViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
-        headerView.backgroundColor = subscriptions[section].color
-        return headerView
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5
-    }
-    
-//    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
-//        footerView.backgroundColor = UIColor.lightGray
-//        return footerView
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+//        //headerView.backgroundColor = subscriptions[section].color
+//        return headerView
 //    }
 //
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 10))
+        footerView.backgroundColor = UIColor.clear
+        return footerView
     }
 
     /*

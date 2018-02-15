@@ -37,6 +37,11 @@ struct UserSubscriptionModel: TableViewSource {
         cell.icon.image = UIImage(named: self.name.lowercased().replacingOccurrences(of: " ", with: ""))
         cell.cost.text = "$\(self.cost)"
         cell.type.text = "/\(self.type)"
+        cell.colorBar.backgroundColor = color
+        cell.colorBar.frame.size.width /= 1.5
+        
+        cell.header.backgroundColor = .clear
+        cell.footer.backgroundColor = UIColor.init(white: 0.9, alpha: 1.0)
 
         return cell
     }

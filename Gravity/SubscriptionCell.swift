@@ -6,6 +6,9 @@ class SubscriptionCell: UITableViewCell {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var cost: UILabel!
     @IBOutlet weak var type: UILabel!
+    @IBOutlet weak var colorBar: UIView!
+    @IBOutlet weak var header: UIView!
+    @IBOutlet weak var footer: UIView!
     
     @IBOutlet weak var friends: UICollectionView!
     
