@@ -101,22 +101,46 @@
 				545ADA1F20266E70009C0EB9 /* Info.plist */,
 				542FA18A20339ED70006D423 /* TableViewSource.swift */,
 				542FA1922033BD3E0006D423 /* CollectionViewSource.swift */,
+				547A103720363A8A00ECCDFD /* Models */,
+				547A103620363A7600ECCDFD /* ViewControllers */,
+				547A103820363A9800ECCDFD /* Cells */,
+				54F9E93220269AFB00AB139C /* GoogleService-Info.plist */,
+			);
+			path = Gravity;
+			sourceTree = "<group>";
+		};
+		547A103620363A7600ECCDFD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				545ADA25202677F8009C0EB9 /* SubscriptionsViewController.swift */,
+				54C3B10D2026BF9400459229 /* AddSubscriptionViewController.swift */,
+				54C3B1112026C79900459229 /* EditSubscriptionViewController.swift */,
+				54DC43302027846400AB94FA /* FBLoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		547A103720363A8A00ECCDFD /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				5475902220268B430045DB8B /* UserSubscriptionModel.swift */,
 				542FA18C2033A19F0006D423 /* DefaultSubscriptionModel.swift */,
 				542FA1902033B0470006D423 /* UserFriendsModel.swift */,
 				542FA18E2033A2180006D423 /* FriendModel.swift */,
-				54F9E93220269AFB00AB139C /* GoogleService-Info.plist */,
-				545ADA25202677F8009C0EB9 /* SubscriptionsViewController.swift */,
-				54C3B10D2026BF9400459229 /* AddSubscriptionViewController.swift */,
-				54C3B1112026C79900459229 /* EditSubscriptionViewController.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		547A103820363A9800ECCDFD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
 				54C3B10F2026BFBD00459229 /* AddCell.swift */,
 				54C3B10B2026AA3400459229 /* FriendCell.swift */,
 				54C3B1132026F39300459229 /* ExpandedFriendCell.swift */,
 				54C3B1152026F82B00459229 /* ExpandedSubscriptionCell.swift */,
 				545ADA2720267A3A009C0EB9 /* SubscriptionCell.swift */,
-				54DC43302027846400AB94FA /* FBLoginViewController.swift */,
 			);
-			path = Gravity;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		63C1E109490F252DF1F94FE3 /* Pods */ = {
@@ -249,7 +273,6 @@
 				"${BUILT_PRODUCTS_DIR}/DateTimePicker/DateTimePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HGPlaceholders/HGPlaceholders.framework",
-				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/RAMReel/RAMReel.framework",
 				"${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework",
 				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
@@ -260,7 +283,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTimePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HGPlaceholders.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMReel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkeletonView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",

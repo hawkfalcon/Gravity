@@ -3,6 +3,7 @@ import UIKit
 class ExpandedSubscriptionCell: UITableViewCell {
 
     @IBOutlet weak var friends: UICollectionView!
+    @IBOutlet weak var footer: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +23,4 @@ class ExpandedSubscriptionCell: UITableViewCell {
         friends.tag = row
         friends.reloadData()
     }
-
 }

@@ -1,11 +1,3 @@
-//
-//  AddViewController.swift
-//  Gravity
-//
-//  Created by Tristen Miller on 2/3/18.
-//  Copyright © 2018 SLOHacks. All rights reserved.
-//
-
 import UIKit
 import FirebaseDatabase
 
@@ -62,14 +54,10 @@ class AddSubscriptionViewController: UITableViewController {
         return 1
     }
     
-    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.performSegue(withIdentifier: "subSegue", sender: subscriptionDefaults[indexPath.section])
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "subSegue" {
             guard let destination = segue.destination as? EditSubscriptionViewController else {
-                print("Error loading SubscriptionViewController")
+                print("Error loading EditSubscriptionViewController")
                 return
             }
             destination.mainVC = mainVC

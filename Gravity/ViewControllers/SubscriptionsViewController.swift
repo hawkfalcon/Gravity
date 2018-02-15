@@ -10,10 +10,10 @@ class SubscriptionsViewController: UITableViewController {
             UIColor(red: 30, green: 215, blue: 96), cost: 4.99, type: "mo")
         ]
     
-    let cellIdentifier = "SubscriptionCell"
     @IBOutlet weak var total: UIBarButtonItem!
 
     override func viewDidLoad() {
+        // Temporary friend data
         subscriptions[0].friends = [
             FriendModel(first: "Test", last: "Test", image: "profile1"),
             FriendModel(first: "Test2", last: "Test2", image: "profile2")
@@ -43,19 +43,12 @@ class SubscriptionsViewController: UITableViewController {
         }
         return (monthly + yearly / 12.0).rounded(toPlaces: 2)
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return subscriptions.count
     }
     
-    var selectedIndex = -1
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == selectedIndex {
-            return 2
-        }
-        return 1
-    }
-    
+    // Dequeue cells using TableViewSource compliant models
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let subscription = subscriptions[indexPath.section]
@@ -83,22 +76,21 @@ class SubscriptionsViewController: UITableViewController {
         cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
     }
     
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return cellSpacingHeight
-//    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row != 0 {
-            return 300
+    // keep track of single selected cell
+    var currentlySelected = -1
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == currentlySelected {
+            return 2
         }
-        return 105 //Not expanded
+        return 1
     }
     
+    // TODO: clean up selection 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let curIndexPath = IndexPath(row: 1, section: indexPath.section)
 
-        if selectedIndex == indexPath.section {
-            selectedIndex = -1
+        if currentlySelected == indexPath.section {
+            currentlySelected = -1
             if let cell = tableView.cellForRow(at: indexPath) as? SubscriptionCell {
                 cell.friends.isHidden = false
             }
@@ -106,17 +98,17 @@ class SubscriptionsViewController: UITableViewController {
             tableView.deleteRows(at: [curIndexPath], with: .automatic)
             tableView.endUpdates()
         } else {
-            if selectedIndex != -1 {
-                if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: selectedIndex)) as? SubscriptionCell {
+            if currentlySelected != -1 {
+                if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: currentlySelected)) as? SubscriptionCell {
                     cell.friends.isHidden = false
                 }
-                let ipath = IndexPath(row: 1, section: selectedIndex)
-                selectedIndex = -1
+                let ipath = IndexPath(row: 1, section: currentlySelected)
+                currentlySelected = -1
                 tableView.beginUpdates()
                 tableView.deleteRows(at: [ipath], with: .automatic)
                 tableView.endUpdates()
             }
-            selectedIndex = indexPath.section
+            currentlySelected = indexPath.section
             if let cell = tableView.cellForRow(at: indexPath) as? SubscriptionCell {
                 cell.friends.isHidden = true
                 subscriptions[indexPath.section].current = true
@@ -128,19 +120,14 @@ class SubscriptionsViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    @IBAction func login(_ sender: Any) {
-        let storyboard =  UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "facebook") as? FBLoginViewController {
-        navigationController?.pushViewController(vc, animated: true)
+    // MARK: set up size and footer
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row != 0 {
+            return 300
         }
+        return 105 //Not expanded
     }
     
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
-//        //headerView.backgroundColor = subscriptions[section].color
-//        return headerView
-//    }
-//
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
@@ -194,15 +181,24 @@ class SubscriptionsViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
   */
+    
+    // temporary fake facebook login
+    @IBAction func login(_ sender: Any) {
+        let storyboard =  UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "facebook") as? FBLoginViewController {
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    // when we go to the next view, keep reference to main view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
         if let dest = segue.destination as? AddSubscriptionViewController {
             dest.mainVC = self
         }
     }
-
 }
 
+// populate friend images and names for collection views
 extension SubscriptionsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return subscriptions[collectionView.tag].friends.count
@@ -210,13 +206,16 @@ extension SubscriptionsViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        // tag was previously set to cell section index
         let tableCell = subscriptions[collectionView.tag]
         let friend = tableCell.friends[indexPath.row]
         
+        // dequeue for expanded friend cell
         if tableCell.current {
             return friend.cellForCollectionView(collectionView: collectionView, atIndexPath: indexPath)
         }
         
+        // dequeue for friend cell
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
             "FriendCell", for: indexPath) as? FriendCell else {
                 fatalError("Cell not found")

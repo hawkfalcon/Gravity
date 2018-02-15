@@ -5,7 +5,6 @@ target 'Gravity' do
    pod 'Firebase/Core' 
    pod 'Firebase/Database'
 
-   pod 'Hero' # Fancy UI animations
    pod 'SkeletonView' # UI to show that something is loading
    pod 'ViewAnimator' # Animated tableview
    pod 'BulletinBoard' # Popover to use for facebook login

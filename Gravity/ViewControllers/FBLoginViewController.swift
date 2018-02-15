@@ -1,11 +1,3 @@
-//
-//  FBLoginViewController.swift
-//  Gravity
-//
-//  Created by Tristen Miller on 2/4/18.
-//  Copyright © 2018 SLOHacks. All rights reserved.
-//
-
 import UIKit
 
 class FBLoginViewController: UIViewController {
