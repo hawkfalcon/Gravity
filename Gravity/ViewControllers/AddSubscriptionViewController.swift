@@ -2,7 +2,7 @@ import UIKit
 import FirebaseDatabase
 
 class AddSubscriptionViewController: UITableViewController {
-    var subscriptionDefaults = [UserSubscriptionModel]()
+    var subscriptionDefaults = [DefaultSubscriptionModel]()
     
     var mainVC: SubscriptionsViewController?
 
@@ -14,7 +14,7 @@ class AddSubscriptionViewController: UITableViewController {
                 for entry in subscriptiondict.allValues {
                     if let subscriptionvalue = entry as? NSDictionary {
                         self.subscriptionDefaults.append(
-                            UserSubscriptionModel(
+                            DefaultSubscriptionModel(
                                 name: subscriptionvalue["name"] as? String ?? "COMPANY NAME",
                                 icon: subscriptionvalue["icon"] as? String ?? "ICON",
                                 color: UIColor(
@@ -26,7 +26,6 @@ class AddSubscriptionViewController: UITableViewController {
                                 type: subscriptionvalue["type"] as? String ?? "TYPE"
                         ))
                     }
-                    
                 }
                 
                 self.tableView.reloadData()
@@ -39,8 +38,8 @@ class AddSubscriptionViewController: UITableViewController {
             
         }
         )
-        subscriptionDefaults.append(UserSubscriptionModel(name: "Custom", icon: "none", color:
-            UIColor(red: 100, green: 100, blue: 100, alpha: 1.0), cost: 0.0, type: "mo"))
+        subscriptionDefaults.append(DefaultSubscriptionModel(name: "Custom", icon: "none", color:
+            UIColor(red: 150, green: 150, blue: 10, alpha: 1.0), cost: 0.0, type: "mo"))
 
         super.viewDidLoad()
     
@@ -62,26 +61,16 @@ class AddSubscriptionViewController: UITableViewController {
             }
             destination.mainVC = mainVC
             if let index = tableView.indexPathForSelectedRow?.section {
-                destination.subscription = subscriptionDefaults[index]
+                destination.subscription = UserSubscriptionModel(name: "", icon: "", color: .white, cost: 0, type: "mo")
             }
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? AddCell else {
-            fatalError("Cell not found")
-        }
+        let defaultSubscription = subscriptionDefaults[indexPath.section]
         
-        let sub = subscriptionDefaults[indexPath.section]
-        cell.name.text = sub.name
-        cell.icon.image = UIImage(named: sub.name.lowercased().replacingOccurrences(of: " ", with: ""))
-        cell.layer.borderWidth = 1.0
-        cell.layer.borderColor = sub.color.cgColor
-        cell.layer.cornerRadius = 8
-        cell.layer.masksToBounds = true
-
-        return cell
+        return defaultSubscription.cellForTableView(tableView: tableView, atIndexPath: indexPath)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
