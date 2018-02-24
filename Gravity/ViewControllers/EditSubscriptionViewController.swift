@@ -1,16 +1,8 @@
-//
-//  SubscriptionViewController.swift
-//  Gravity
-//
-//  Created by Tristen Miller on 2/3/18.
-//  Copyright © 2018 SLOHacks. All rights reserved.
-//
-
 import UIKit
 
 class EditSubscriptionViewController: UITableViewController, UITextFieldDelegate {
 
-    var subscription: UserSubscriptionModel!
+    var subscription: Subscription!
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var icon: UIImageView!
@@ -22,8 +14,8 @@ class EditSubscriptionViewController: UITableViewController, UITextFieldDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        name.text = subscription.name
-        icon.image = UIImage(named: subscription.name.lowercased().replacingOccurrences(of: " ", with: ""))
+        name.text = subscription.brand.name
+        icon.image = subscription.brand.icon
         date.text = "02/04/2018"
         price.text = "\(subscription.cost)"
         frequency.text = subscription.type
@@ -31,7 +23,7 @@ class EditSubscriptionViewController: UITableViewController, UITextFieldDelegate
     }
     
     @IBAction func done(_ sender: Any) {
-        mainVC?.subscriptions.append(subscription)
+        mainVC?.subscriptionModels.append(SubscriptionViewModel(subscription: subscription))
 
         dismiss(animated: true, completion: nil)
     }

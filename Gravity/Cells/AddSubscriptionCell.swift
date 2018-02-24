@@ -1,26 +1,28 @@
-//
-//  AddCell.swift
-//  Gravity
-//
-//  Created by Tristen Miller on 2/3/18.
-//  Copyright © 2018 SLOHacks. All rights reserved.
-//
-
 import UIKit
 
-class AddCell: UITableViewCell {
+class AddSubscriptionCell: UITableViewCell, Configurable {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var name: UILabel!
     
+    var model: AddSubscriptionViewModel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    func configureWithModel(_ model: AddSubscriptionViewModel) {
+        self.model = model
+        
+        self.name.text = model.subscription.brand.name
+        self.icon.image = model.subscription.brand.icon
+        self.layer.borderColor = model.subscription.brand.color.cgColor
+        self.layer.borderWidth = 1.0
+        self.layer.cornerRadius = 8
+        self.layer.masksToBounds = true
     }
     
     override var frame: CGRect {

@@ -1,5 +1,6 @@
 import UIKit
-protocol TableViewSource {
+
+protocol TableCellRepresentable {
 
     var cellIdentifier: String { get }
         

@@ -1,5 +1,6 @@
 import UIKit
-protocol CollectionViewSource {
+
+protocol CollectionCellRepresentable {
     
     var cellIdentifier: String { get }
     

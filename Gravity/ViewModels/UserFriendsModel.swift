@@ -3,7 +3,7 @@ import UIKit
 /* Data to hold User Friends
    Associated with ExpandedSubscription Cells (Table)
  */
-struct UserFriendsModel: TableViewSource {
+struct UserFriendsModel: TableCellRepresentable {
     var friends: [FriendModel]
         
     var cellIdentifier: String {

@@ -3,7 +3,7 @@ import UIKit
 /* Data to hold User Friends
    Associated with Expanded Friend Cells (Collection)
  */
-struct FriendModel: CollectionViewSource {
+struct FriendModel: CollectionCellRepresentable {
     var first: String
     var last: String
     var image: String
