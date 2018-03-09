@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gravity-logo" translatesAutoresizingMaskIntoConstraints="NO" id="WgE-nw-Xqn">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gravity-logo" translatesAutoresizingMaskIntoConstraints="NO" id="WgE-nw-Xqn">
                                 <rect key="frame" x="16" y="20" width="345" height="345"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -33,6 +33,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gravity-logo" width="467" height="467"/>
+        <image name="gravity-logo" width="800" height="800"/>
     </resources>
 </document>

@@ -1,5 +1,4 @@
 import UIKit
-import ViewAnimator
 
 class SubscriptionsViewController: UITableViewController {
     

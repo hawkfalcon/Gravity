@@ -1,6 +1,7 @@
 PODS:
   - BulletinBoard (1.3.0)
   - DateTimePicker (1.2.1)
+  - DGCollectionViewLeftAlignFlowLayout (1.0.4)
   - Firebase/Core (3.11.0):
     - FirebaseAnalytics (= 3.6.0)
     - FirebaseCore (= 3.4.6)
@@ -25,24 +26,28 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.0)
   - GoogleToolboxForMac/NSData+zlib (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
+  - Hero (1.1.0)
   - HGPlaceholders (0.3.0)
   - RAMReel (3.0.0)
   - SkeletonView (1.1)
-  - ViewAnimator (1.0.4)
+  - SwipeCellKit (2.0.1)
 
 DEPENDENCIES:
   - BulletinBoard
   - DateTimePicker
+  - DGCollectionViewLeftAlignFlowLayout
   - Firebase/Core
   - Firebase/Database
+  - Hero
   - HGPlaceholders
   - RAMReel
   - SkeletonView
-  - ViewAnimator
+  - SwipeCellKit
 
 SPEC CHECKSUMS:
   BulletinBoard: 23c9d98cac654fd484d76f2a0655669974e9bd9c
   DateTimePicker: c7b10f7dfe6eb06014c88df964a0a994f246b791
+  DGCollectionViewLeftAlignFlowLayout: a0fa58797373ded039cafba8133e79373d048399
   Firebase: b8134e285eb33201115bc688bc5d7f112923bc1f
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseCore: 03da1cb32615569bbc2830a22f9ad753d9a02ef5
@@ -51,11 +56,12 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
+  Hero: ce59e81c79390613d97b43da7179e2c5e1017e04
   HGPlaceholders: 2df01c51b04a30acd0b8c9c7161c7cdde4541109
   RAMReel: a123d736773901a9a3d2ef559c176a50c338b5de
   SkeletonView: 0d60be8bcb706f2309fd4e09d7455798f9fc1fb2
-  ViewAnimator: 1f3fa25f3c9010ab0dda06cf9e3e49a4b55834ff
+  SwipeCellKit: 76888d93d1843dc568fdf38fff21b15dbbcf6b28
 
-PODFILE CHECKSUM: c7dfeb2836525d8e58adb1c52d6fd13ea25c192c
+PODFILE CHECKSUM: c2425af2eb114e6a425c2ccd900cac9b914709b7
 
 COCOAPODS: 1.4.0

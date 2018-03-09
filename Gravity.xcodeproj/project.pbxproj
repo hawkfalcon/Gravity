@@ -12,12 +12,14 @@
 		542FA18F2033A2180006D423 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA18E2033A2180006D423 /* FriendModel.swift */; };
 		542FA1912033B0470006D423 /* UserFriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA1902033B0470006D423 /* UserFriendsModel.swift */; };
 		542FA1932033BD3E0006D423 /* CollectionCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA1922033BD3E0006D423 /* CollectionCellRepresentable.swift */; };
+		5438D84C2051EBAF006D4D9D /* AddSubscriptionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5438D84B2051EBAE006D4D9D /* AddSubscriptionCollectionViewController.swift */; };
 		545ADA1420266E70009C0EB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545ADA1320266E70009C0EB9 /* AppDelegate.swift */; };
 		545ADA1920266E70009C0EB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545ADA1720266E70009C0EB9 /* Main.storyboard */; };
 		545ADA1B20266E70009C0EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 545ADA1A20266E70009C0EB9 /* Assets.xcassets */; };
 		545ADA1E20266E70009C0EB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545ADA1C20266E70009C0EB9 /* LaunchScreen.storyboard */; };
 		545ADA26202677F8009C0EB9 /* SubscriptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545ADA25202677F8009C0EB9 /* SubscriptionsViewController.swift */; };
 		545ADA2820267A3A009C0EB9 /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545ADA2720267A3A009C0EB9 /* SubscriptionCell.swift */; };
+		5473ED6C205316E200AE6ED8 /* AddSubscriptionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5473ED6B205316E200AE6ED8 /* AddSubscriptionCollectionCell.swift */; };
 		5475902120267EA70045DB8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5475902020267EA70045DB8B /* Default-568h@2x.png */; };
 		5475902320268B430045DB8B /* SubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475902220268B430045DB8B /* SubscriptionViewModel.swift */; };
 		549A4F8F204205C00002E99B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A4F8E204205C00002E99B /* Subscription.swift */; };
@@ -41,6 +43,7 @@
 		542FA18E2033A2180006D423 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
 		542FA1902033B0470006D423 /* UserFriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFriendsModel.swift; sourceTree = "<group>"; };
 		542FA1922033BD3E0006D423 /* CollectionCellRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellRepresentable.swift; sourceTree = "<group>"; };
+		5438D84B2051EBAE006D4D9D /* AddSubscriptionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionCollectionViewController.swift; sourceTree = "<group>"; };
 		54410412315ED6591203260B /* Pods-Gravity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gravity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gravity/Pods-Gravity.release.xcconfig"; sourceTree = "<group>"; };
 		545ADA1020266E70009C0EB9 /* Gravity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gravity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		545ADA1320266E70009C0EB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +53,7 @@
 		545ADA1F20266E70009C0EB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		545ADA25202677F8009C0EB9 /* SubscriptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsViewController.swift; sourceTree = "<group>"; };
 		545ADA2720267A3A009C0EB9 /* SubscriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
+		5473ED6B205316E200AE6ED8 /* AddSubscriptionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionCollectionCell.swift; sourceTree = "<group>"; };
 		5475902020267EA70045DB8B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5475902220268B430045DB8B /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
 		549A4F8E204205C00002E99B /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				54C3B10D2026BF9400459229 /* AddSubscriptionViewController.swift */,
 				54C3B1112026C79900459229 /* EditSubscriptionViewController.swift */,
 				54DC43302027846400AB94FA /* FBLoginViewController.swift */,
+				5438D84B2051EBAE006D4D9D /* AddSubscriptionCollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 				54C3B1152026F82B00459229 /* ExpandedSubscriptionCell.swift */,
 				54C3B10B2026AA3400459229 /* FriendCell.swift */,
 				54C3B1132026F39300459229 /* ExpandedFriendCell.swift */,
+				5473ED6B205316E200AE6ED8 /* AddSubscriptionCollectionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -287,22 +293,26 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Gravity/Pods-Gravity-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BulletinBoard/BulletinBoard.framework",
+				"${BUILT_PRODUCTS_DIR}/DGCollectionViewLeftAlignFlowLayout/DGCollectionViewLeftAlignFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/DateTimePicker/DateTimePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HGPlaceholders/HGPlaceholders.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/RAMReel/RAMReel.framework",
 				"${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework",
-				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BulletinBoard.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DGCollectionViewLeftAlignFlowLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTimePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HGPlaceholders.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMReel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkeletonView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -335,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54C3B1122026C79900459229 /* EditSubscriptionViewController.swift in Sources */,
+				5438D84C2051EBAF006D4D9D /* AddSubscriptionCollectionViewController.swift in Sources */,
 				542FA18F2033A2180006D423 /* FriendModel.swift in Sources */,
 				549A4F912042067D0002E99B /* Brand.swift in Sources */,
 				545ADA26202677F8009C0EB9 /* SubscriptionsViewController.swift in Sources */,
@@ -352,6 +363,7 @@
 				542FA18D2033A19F0006D423 /* AddSubscriptionViewModel.swift in Sources */,
 				542FA1932033BD3E0006D423 /* CollectionCellRepresentable.swift in Sources */,
 				5475902320268B430045DB8B /* SubscriptionViewModel.swift in Sources */,
+				5473ED6C205316E200AE6ED8 /* AddSubscriptionCollectionCell.swift in Sources */,
 				545ADA1420266E70009C0EB9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

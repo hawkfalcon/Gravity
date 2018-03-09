@@ -6,9 +6,11 @@ target 'Gravity' do
    pod 'Firebase/Database'
 
    pod 'SkeletonView' # UI to show that something is loading
-   pod 'ViewAnimator' # Animated tableview
    pod 'BulletinBoard' # Popover to use for facebook login
    pod 'HGPlaceholders' # Placeholders for no content/errors
    pod 'RAMReel' # Search autocomplete
    pod 'DateTimePicker' # Better date picker
+   pod 'SwipeCellKit' # Edit/Delete cells like in mail
+   pod 'DGCollectionViewLeftAlignFlowLayout' # Left Aligned Flow
+   pod 'Hero' # Animated view controller transitions
 end
