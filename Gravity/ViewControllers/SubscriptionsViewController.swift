@@ -1,4 +1,5 @@
 import UIKit
+import Hero
 
 class SubscriptionsViewController: UITableViewController {
     
@@ -6,11 +7,11 @@ class SubscriptionsViewController: UITableViewController {
         SubscriptionViewModel(subscription: Subscription(id: 0, brand:
             Brand(name: "Netflix", icon: "netflix", color:
                 UIColor(red: 185, green: 9, blue: 11)),
-            cost: 9.99, type: "mo")),
+            cost: 9.99, type: "mo", date: Date())),
         SubscriptionViewModel(subscription: Subscription(id: 1, brand:
             Brand(name: "Spotify", icon: "spotify", color:
                 UIColor(red: 30, green: 215, blue: 96)),
-            cost: 4.99, type: "mo"))
+            cost: 4.99, type: "mo", date: Date()))
         ]
     
     @IBOutlet weak var total: UIBarButtonItem!
@@ -26,6 +27,7 @@ class SubscriptionsViewController: UITableViewController {
             FriendModel(first: "T", last: "T", image: "profile")
         ]
         
+        navigationController?.hero.isEnabled = true
         super.viewDidLoad()
     }
     
@@ -83,7 +85,7 @@ class SubscriptionsViewController: UITableViewController {
             currentlySelected = indexPath.section
             if let cell = tableView.cellForRow(at: indexPath) as? SubscriptionCell {
                 cell.friends.isHidden = true
-                subscriptionModels[indexPath.section].current = true
+                subscriptionModels[currentlySelected].current = true
             }
             tableView.beginUpdates()
             tableView.insertRows(at: [curIndexPath], with: .automatic)
@@ -157,7 +159,11 @@ class SubscriptionsViewController: UITableViewController {
     
     // when we go to the next view, keep reference to main view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? AddSubscriptionViewController {
+        if currentlySelected > -1 {
+            subscriptionModels[currentlySelected].current = false
+        }
+        currentlySelected = -1
+        if let dest = segue.destination as? AddSubscriptionCollectionViewController {
             dest.mainVC = self
         }
     }
@@ -198,7 +204,7 @@ extension SubscriptionsViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 8
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

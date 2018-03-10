@@ -13,19 +13,7 @@ class AddSubscriptionViewController: UITableViewController {
                 for entry in subscriptiondict.allValues {
                     if let subscriptionvalue = entry as? NSDictionary {
                         self.addSubscriptionModels.append(
-                            AddSubscriptionViewModel(subscription: Subscription(id: 0,
-                                brand: Brand(
-                                    name: subscriptionvalue["name"] as? String ?? "COMPANY NAME",
-                                    icon: subscriptionvalue["icon"] as? String ?? "ICON",
-                                    color: UIColor(
-                                        red: subscriptionvalue["r"] as? CGFloat ?? 1.0,
-                                        green: subscriptionvalue["g"] as? CGFloat ?? 1.0,
-                                        blue: subscriptionvalue["b"] as? CGFloat ?? 1.0
-                                    )
-                                ),
-                                cost: subscriptionvalue["cost"] as? Float ?? -1.0,
-                                type: subscriptionvalue["type"] as? String ?? "TYPE"
-                            )
+                            AddSubscriptionViewModel(subscription: self.createSubscription(subscriptionvalue: subscriptionvalue)
                         ))
                     }
                 }
@@ -43,10 +31,27 @@ class AddSubscriptionViewController: UITableViewController {
         addSubscriptionModels.append(AddSubscriptionViewModel(subscription: Subscription(
             id: 0, brand: Brand(name: "Custom", icon: "none", color:
             UIColor(red: 150, green: 150, blue: 10, alpha: 1.0)),
-            cost: 0.0, type: "mo")))
+            cost: 0.0, type: "mo", date: Date())))
 
         super.viewDidLoad()
     
+    }
+    
+    func createSubscription(subscriptionvalue: NSDictionary) -> Subscription {
+        return Subscription(id: 0,
+            brand: Brand(
+                name: subscriptionvalue["name"] as? String ?? "COMPANY NAME",
+                icon: subscriptionvalue["icon"] as? String ?? "ICON",
+                color: UIColor(
+                     red: subscriptionvalue["r"] as? CGFloat ?? 1.0,
+                     green: subscriptionvalue["g"] as? CGFloat ?? 1.0,
+                     blue: subscriptionvalue["b"] as? CGFloat ?? 1.0
+                )
+            ),
+            cost: subscriptionvalue["cost"] as? Float ?? -1.0,
+            type: subscriptionvalue["type"] as? String ?? "TYPE",
+            date: Date()
+        )
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

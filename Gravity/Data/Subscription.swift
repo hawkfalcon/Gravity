@@ -6,4 +6,5 @@ struct Subscription {
     
     var cost: Float
     var type: String
+    var date: Date
 }

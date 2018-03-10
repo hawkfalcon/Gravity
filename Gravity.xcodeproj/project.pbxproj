@@ -13,6 +13,7 @@
 		542FA1912033B0470006D423 /* UserFriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA1902033B0470006D423 /* UserFriendsModel.swift */; };
 		542FA1932033BD3E0006D423 /* CollectionCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA1922033BD3E0006D423 /* CollectionCellRepresentable.swift */; };
 		5438D84C2051EBAF006D4D9D /* AddSubscriptionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5438D84B2051EBAE006D4D9D /* AddSubscriptionCollectionViewController.swift */; };
+		5448090F2053380E00D5FB40 /* AddSubscriptionCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5448090E2053380E00D5FB40 /* AddSubscriptionCollectionViewModel.swift */; };
 		545ADA1420266E70009C0EB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545ADA1320266E70009C0EB9 /* AppDelegate.swift */; };
 		545ADA1920266E70009C0EB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545ADA1720266E70009C0EB9 /* Main.storyboard */; };
 		545ADA1B20266E70009C0EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 545ADA1A20266E70009C0EB9 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		542FA1922033BD3E0006D423 /* CollectionCellRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellRepresentable.swift; sourceTree = "<group>"; };
 		5438D84B2051EBAE006D4D9D /* AddSubscriptionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionCollectionViewController.swift; sourceTree = "<group>"; };
 		54410412315ED6591203260B /* Pods-Gravity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gravity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gravity/Pods-Gravity.release.xcconfig"; sourceTree = "<group>"; };
+		5448090E2053380E00D5FB40 /* AddSubscriptionCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionCollectionViewModel.swift; sourceTree = "<group>"; };
 		545ADA1020266E70009C0EB9 /* Gravity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gravity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		545ADA1320266E70009C0EB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		545ADA1820266E70009C0EB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				542FA18C2033A19F0006D423 /* AddSubscriptionViewModel.swift */,
 				542FA1902033B0470006D423 /* UserFriendsModel.swift */,
 				542FA18E2033A2180006D423 /* FriendModel.swift */,
+				5448090E2053380E00D5FB40 /* AddSubscriptionCollectionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				54C3B1142026F39300459229 /* ExpandedFriendCell.swift in Sources */,
 				54C3B1102026BFBD00459229 /* AddSubscriptionCell.swift in Sources */,
 				549A4F8F204205C00002E99B /* Subscription.swift in Sources */,
+				5448090F2053380E00D5FB40 /* AddSubscriptionCollectionViewModel.swift in Sources */,
 				54C3B10C2026AA3400459229 /* FriendCell.swift in Sources */,
 				54C3B10E2026BF9400459229 /* AddSubscriptionViewController.swift in Sources */,
 				549A4F93204208D50002E99B /* Configurable.swift in Sources */,

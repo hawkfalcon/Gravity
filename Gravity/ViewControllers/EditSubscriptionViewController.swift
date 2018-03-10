@@ -1,4 +1,5 @@
 import UIKit
+import Hero
 
 class EditSubscriptionViewController: UITableViewController, UITextFieldDelegate {
 
@@ -25,7 +26,9 @@ class EditSubscriptionViewController: UITableViewController, UITextFieldDelegate
     @IBAction func done(_ sender: Any) {
         mainVC?.subscriptionModels.append(SubscriptionViewModel(subscription: subscription))
 
-        dismiss(animated: true, completion: nil)
+        print("DONE")
+        hero.unwindToViewController(mainVC!)
+        //dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
