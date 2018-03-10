@@ -1,4 +1,5 @@
 import UIKit
+import Hero
 
 class SubscriptionCell: UITableViewCell, Configurable {
 
@@ -36,6 +37,8 @@ class SubscriptionCell: UITableViewCell, Configurable {
         
         self.header.backgroundColor = .clear
         self.footer.backgroundColor = UIColor.init(white: 0.9, alpha: 1.0)
+        
+        self.hero.id = model.subscription.brand.name
     }
     
     func setCollectionViewDataSourceDelegate<D: UICollectionViewDataSource &

@@ -25,7 +25,7 @@ class EditSubscriptionViewController: UITableViewController, UITextFieldDelegate
     
     @IBAction func done(_ sender: Any) {
         mainVC?.subscriptionModels.append(SubscriptionViewModel(subscription: subscription))
-
+        icon.hero.id = subscription.brand.name
         print("DONE")
         hero.unwindToViewController(mainVC!)
         //dismiss(animated: true, completion: nil)
