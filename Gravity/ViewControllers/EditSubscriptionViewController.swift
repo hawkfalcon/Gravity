@@ -24,6 +24,11 @@ class EditSubscriptionViewController: UITableViewController, UITextFieldDelegate
     }
     
     @IBAction func done(_ sender: Any) {
+        //subscription.brand.name = name.text
+        //subscription.date = Date()//date.text
+        //subscription.cost = //price.text
+        //subscription.type = frequency.text!
+        
         mainVC?.subscriptionModels.append(SubscriptionViewModel(subscription: subscription))
         icon.hero.id = subscription.brand.name
         print("DONE")

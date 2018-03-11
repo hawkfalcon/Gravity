@@ -10,7 +10,6 @@
 		542FA18B20339ED70006D423 /* TableCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA18A20339ED70006D423 /* TableCellRepresentable.swift */; };
 		542FA18D2033A19F0006D423 /* AddSubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA18C2033A19F0006D423 /* AddSubscriptionViewModel.swift */; };
 		542FA18F2033A2180006D423 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA18E2033A2180006D423 /* FriendModel.swift */; };
-		542FA1912033B0470006D423 /* UserFriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA1902033B0470006D423 /* UserFriendsModel.swift */; };
 		542FA1932033BD3E0006D423 /* CollectionCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA1922033BD3E0006D423 /* CollectionCellRepresentable.swift */; };
 		5438D84C2051EBAF006D4D9D /* AddSubscriptionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5438D84B2051EBAE006D4D9D /* AddSubscriptionCollectionViewController.swift */; };
 		5448090F2053380E00D5FB40 /* AddSubscriptionCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5448090E2053380E00D5FB40 /* AddSubscriptionCollectionViewModel.swift */; };
@@ -26,12 +25,10 @@
 		549A4F8F204205C00002E99B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A4F8E204205C00002E99B /* Subscription.swift */; };
 		549A4F912042067D0002E99B /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A4F902042067D0002E99B /* Brand.swift */; };
 		549A4F93204208D50002E99B /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A4F92204208D50002E99B /* Configurable.swift */; };
-		54C3B10C2026AA3400459229 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B10B2026AA3400459229 /* FriendCell.swift */; };
 		54C3B10E2026BF9400459229 /* AddSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B10D2026BF9400459229 /* AddSubscriptionViewController.swift */; };
 		54C3B1102026BFBD00459229 /* AddSubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B10F2026BFBD00459229 /* AddSubscriptionCell.swift */; };
 		54C3B1122026C79900459229 /* EditSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B1112026C79900459229 /* EditSubscriptionViewController.swift */; };
-		54C3B1142026F39300459229 /* ExpandedFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B1132026F39300459229 /* ExpandedFriendCell.swift */; };
-		54C3B1162026F82B00459229 /* ExpandedSubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B1152026F82B00459229 /* ExpandedSubscriptionCell.swift */; };
+		54C3B1142026F39300459229 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3B1132026F39300459229 /* FriendCell.swift */; };
 		54DC43312027846400AB94FA /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC43302027846400AB94FA /* FBLoginViewController.swift */; };
 		54F9E93320269AFB00AB139C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54F9E93220269AFB00AB139C /* GoogleService-Info.plist */; };
 		ACE211ABA6DE53B8B3CCAD63 /* Pods_Gravity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8405A319A0984AB605ED84B /* Pods_Gravity.framework */; };
@@ -42,7 +39,6 @@
 		542FA18A20339ED70006D423 /* TableCellRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellRepresentable.swift; sourceTree = "<group>"; };
 		542FA18C2033A19F0006D423 /* AddSubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionViewModel.swift; sourceTree = "<group>"; };
 		542FA18E2033A2180006D423 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
-		542FA1902033B0470006D423 /* UserFriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFriendsModel.swift; sourceTree = "<group>"; };
 		542FA1922033BD3E0006D423 /* CollectionCellRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellRepresentable.swift; sourceTree = "<group>"; };
 		5438D84B2051EBAE006D4D9D /* AddSubscriptionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionCollectionViewController.swift; sourceTree = "<group>"; };
 		54410412315ED6591203260B /* Pods-Gravity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gravity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gravity/Pods-Gravity.release.xcconfig"; sourceTree = "<group>"; };
@@ -61,12 +57,10 @@
 		549A4F8E204205C00002E99B /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		549A4F902042067D0002E99B /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		549A4F92204208D50002E99B /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
-		54C3B10B2026AA3400459229 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		54C3B10D2026BF9400459229 /* AddSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionViewController.swift; sourceTree = "<group>"; };
 		54C3B10F2026BFBD00459229 /* AddSubscriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionCell.swift; sourceTree = "<group>"; };
 		54C3B1112026C79900459229 /* EditSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubscriptionViewController.swift; sourceTree = "<group>"; };
-		54C3B1132026F39300459229 /* ExpandedFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFriendCell.swift; sourceTree = "<group>"; };
-		54C3B1152026F82B00459229 /* ExpandedSubscriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedSubscriptionCell.swift; sourceTree = "<group>"; };
+		54C3B1132026F39300459229 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		54DC43302027846400AB94FA /* FBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
 		54F9E93220269AFB00AB139C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D8405A319A0984AB605ED84B /* Pods_Gravity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gravity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,9 +132,8 @@
 				542FA18A20339ED70006D423 /* TableCellRepresentable.swift */,
 				542FA1922033BD3E0006D423 /* CollectionCellRepresentable.swift */,
 				5475902220268B430045DB8B /* SubscriptionViewModel.swift */,
-				542FA18C2033A19F0006D423 /* AddSubscriptionViewModel.swift */,
-				542FA1902033B0470006D423 /* UserFriendsModel.swift */,
 				542FA18E2033A2180006D423 /* FriendModel.swift */,
+				542FA18C2033A19F0006D423 /* AddSubscriptionViewModel.swift */,
 				5448090E2053380E00D5FB40 /* AddSubscriptionCollectionViewModel.swift */,
 			);
 			path = ViewModels;
@@ -152,9 +145,7 @@
 				549A4F92204208D50002E99B /* Configurable.swift */,
 				545ADA2720267A3A009C0EB9 /* SubscriptionCell.swift */,
 				54C3B10F2026BFBD00459229 /* AddSubscriptionCell.swift */,
-				54C3B1152026F82B00459229 /* ExpandedSubscriptionCell.swift */,
-				54C3B10B2026AA3400459229 /* FriendCell.swift */,
-				54C3B1132026F39300459229 /* ExpandedFriendCell.swift */,
+				54C3B1132026F39300459229 /* FriendCell.swift */,
 				5473ED6B205316E200AE6ED8 /* AddSubscriptionCollectionCell.swift */,
 			);
 			path = Cells;
@@ -353,15 +344,12 @@
 				549A4F912042067D0002E99B /* Brand.swift in Sources */,
 				545ADA26202677F8009C0EB9 /* SubscriptionsViewController.swift in Sources */,
 				54DC43312027846400AB94FA /* FBLoginViewController.swift in Sources */,
-				54C3B1142026F39300459229 /* ExpandedFriendCell.swift in Sources */,
+				54C3B1142026F39300459229 /* FriendCell.swift in Sources */,
 				54C3B1102026BFBD00459229 /* AddSubscriptionCell.swift in Sources */,
 				549A4F8F204205C00002E99B /* Subscription.swift in Sources */,
 				5448090F2053380E00D5FB40 /* AddSubscriptionCollectionViewModel.swift in Sources */,
-				54C3B10C2026AA3400459229 /* FriendCell.swift in Sources */,
 				54C3B10E2026BF9400459229 /* AddSubscriptionViewController.swift in Sources */,
 				549A4F93204208D50002E99B /* Configurable.swift in Sources */,
-				542FA1912033B0470006D423 /* UserFriendsModel.swift in Sources */,
-				54C3B1162026F82B00459229 /* ExpandedSubscriptionCell.swift in Sources */,
 				542FA18B20339ED70006D423 /* TableCellRepresentable.swift in Sources */,
 				545ADA2820267A3A009C0EB9 /* SubscriptionCell.swift in Sources */,
 				542FA18D2033A19F0006D423 /* AddSubscriptionViewModel.swift in Sources */,

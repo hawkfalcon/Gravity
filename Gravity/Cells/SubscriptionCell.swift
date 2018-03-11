@@ -1,8 +1,9 @@
 import UIKit
+import SwipeCellKit
 import Hero
 
-class SubscriptionCell: UITableViewCell, Configurable {
-
+class SubscriptionCell: SwipeTableViewCell, Configurable {
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var cost: UILabel!
@@ -13,6 +14,7 @@ class SubscriptionCell: UITableViewCell, Configurable {
     @IBOutlet weak var footer: UIView!
     
     @IBOutlet weak var friends: UICollectionView!
+    @IBOutlet weak var expandedFriends: UICollectionView!
     
     var model: SubscriptionViewModel?
     
@@ -34,19 +36,23 @@ class SubscriptionCell: UITableViewCell, Configurable {
         
         self.colorBar.backgroundColor = model.subscription.brand.color
         self.colorBar.frame.size.width /= 1.5
-        
-        self.header.backgroundColor = .clear
         self.footer.backgroundColor = UIColor.init(white: 0.9, alpha: 1.0)
         
         self.hero.id = model.subscription.brand.name
+        self.expandedFriends.isHidden = true
     }
     
     func setCollectionViewDataSourceDelegate<D: UICollectionViewDataSource &
         UICollectionViewDelegate>(_ dataSourceDelegate: D, forRow row: Int) {
-        
-        friends.delegate = dataSourceDelegate
-        friends.dataSource = dataSourceDelegate
-        friends.tag = row
-        friends.reloadData()
+        setDelegate(collection: friends, dataSourceDelegate: dataSourceDelegate, row: row)
+        setDelegate(collection: expandedFriends, dataSourceDelegate: dataSourceDelegate, row: row)
+    }
+    
+    func setDelegate<D: UICollectionViewDataSource &
+        UICollectionViewDelegate>(collection: UICollectionView, dataSourceDelegate: D, row: Int) {
+        collection.delegate = dataSourceDelegate
+        collection.dataSource = dataSourceDelegate
+        collection.tag = row
+        collection.reloadData()
     }
 }

@@ -1,4 +1,5 @@
 import UIKit
+import SwipeCellKit
 import Hero
 
 class SubscriptionsViewController: UITableViewController {
@@ -28,6 +29,10 @@ class SubscriptionsViewController: UITableViewController {
         ]
         
         navigationController?.hero.isEnabled = true
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 115
+        
         super.viewDidLoad()
     }
     
@@ -50,90 +55,32 @@ class SubscriptionsViewController: UITableViewController {
         return (monthly + yearly / 12.0).rounded(toPlaces: 2)
     }
 
-    // keep track of single selected cell
-    var currentlySelected = -1
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == currentlySelected {
-            return 2
-        }
-        return 1
+        return subscriptionModels.count
     }
     
-    // TODO: clean up selection 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let curIndexPath = IndexPath(row: 1, section: indexPath.section)
-
-        if currentlySelected == indexPath.section {
-            currentlySelected = -1
-            if let cell = tableView.cellForRow(at: indexPath) as? SubscriptionCell {
-                cell.friends.isHidden = false
+        if let cell = tableView.cellForRow(at: indexPath) as? SubscriptionCell {
+            UIView.animate(withDuration: 0.3) {
+                cell.expandedFriends.isHidden = !cell.expandedFriends.isHidden
             }
             tableView.beginUpdates()
-            tableView.deleteRows(at: [curIndexPath], with: .automatic)
             tableView.endUpdates()
-        } else {
-            if currentlySelected != -1 {
-                if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: currentlySelected)) as? SubscriptionCell {
-                    cell.friends.isHidden = false
-                }
-                let ipath = IndexPath(row: 1, section: currentlySelected)
-                currentlySelected = -1
-                tableView.beginUpdates()
-                tableView.deleteRows(at: [ipath], with: .automatic)
-                tableView.endUpdates()
-            }
-            currentlySelected = indexPath.section
-            if let cell = tableView.cellForRow(at: indexPath) as? SubscriptionCell {
-                cell.friends.isHidden = true
-                subscriptionModels[currentlySelected].current = true
-            }
-            tableView.beginUpdates()
-            tableView.insertRows(at: [curIndexPath], with: .automatic)
-            tableView.endUpdates()
+            tableView.deselectRow(at: indexPath, animated: false)
         }
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row != 0 {
-            guard let cell = cell as? ExpandedSubscriptionCell else {
-                fatalError("Cell not found")
-            }
-            cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
-            return
-        }
-        
         guard let cell = cell as? SubscriptionCell else {
             fatalError("Cell not found")
         }
-        cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
+        cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle:
-     UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+   
     // Override to support rearranging the table view.
-//    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-//
-//    }
+    //    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    //
+    //    }
 
     /*
     // Override to support conditional rearranging of the table view.
@@ -147,7 +94,7 @@ class SubscriptionsViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-  */
+    */
     
     // temporary fake facebook login
     @IBAction func login(_ sender: Any) {
@@ -159,10 +106,6 @@ class SubscriptionsViewController: UITableViewController {
     
     // when we go to the next view, keep reference to main view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if currentlySelected > -1 {
-            subscriptionModels[currentlySelected].current = false
-        }
-        currentlySelected = -1
         if let dest = segue.destination as? AddSubscriptionCollectionViewController {
             dest.mainVC = self
         }
@@ -172,45 +115,33 @@ class SubscriptionsViewController: UITableViewController {
 // MARK: - UITableViewDataSource
 extension SubscriptionsViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return subscriptionModels.count
+        return 1
     }
     
     // Dequeue cells using TableViewSource compliant models
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let subscription = subscriptionModels[indexPath.section]
+        var subscription = subscriptionModels[indexPath.row]
+        subscription.mainVC = self
         
-        var subscriptionSource: TableCellRepresentable = subscription
-        if indexPath.row != 0 {
-            subscriptionSource = UserFriendsModel(friends: subscription.friends)
-        }
-        
-        return subscriptionSource.cellForTableView(tableView: tableView, atIndexPath: indexPath)
+        return subscription.cellForTableView(tableView: tableView, atIndexPath: indexPath)
     }
 }
 
 // MARK: - UITableViewDelegate
 extension SubscriptionsViewController {
     // Set up size and footer
+
+    /* We now set this dynamically
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row != 0 {
-            return 300
-        }
-        return 105 //Not expanded
-    }
+    }*/
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 4
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 10))
-        footerView.backgroundColor = .clear
-        return footerView
+        return 0
     }
 }
 
@@ -226,22 +157,47 @@ extension SubscriptionsViewController: UICollectionViewDelegate, UICollectionVie
         let tableCell = subscriptionModels[collectionView.tag]
         let friend = tableCell.friends[indexPath.row]
         
-        // dequeue for expanded friend cell
-        if tableCell.current {
-            return friend.cellForCollectionView(collectionView: collectionView, atIndexPath: indexPath)
+        return friend.cellForCollectionView(collectionView: collectionView, atIndexPath: indexPath)
+    }
+}
+
+extension SubscriptionsViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let delete = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            self.subscriptionModels.remove(at: indexPath.row)
+            //tableView.deleteRows(at: [indexPath], with: .automatic)
+//            DispatchQueue.main.async {
+//                print(self.subscriptionModels.count)
+//                print(indexPath.section)
+//                self.subscriptionModels.remove(at: indexPath.section)
+//                print(self.subscriptionModels.count)
+//                tableView.beginUpdates()
+//                tableView.deleteRows(at: [indexPath], with: .automatic)
+//                tableView.deleteSections([indexPath.section], with: .automatic)
+//                tableView.endUpdates()
+//            }
         }
+        //configure(action: delete, with: .trash)
         
-        // dequeue for friend cell
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
-            "FriendCell", for: indexPath) as? FriendCell else {
-                fatalError("Cell not found")
+        let edit = SwipeAction(style: .default, title: "Edit") { action, indexPath in
+            // handle action by updating model with deletion
         }
+        edit.hidesWhenSelected = true
         
-        let image = UIImage(named: friend.image)
-        cell.profile.image = image
-        cell.profile.setRounded()
+        // customize the action appearance
+        //deleteAction.image = UIImage(named: "delete")
         
-        return cell
+        return [delete, edit]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        var options = SwipeTableOptions()
+        options.expansionStyle = .destructive
+        options.transitionStyle = .border
+        
+        return options
     }
 }
 

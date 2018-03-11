@@ -7,13 +7,13 @@ import UIKit
 struct SubscriptionViewModel: TableCellRepresentable {
     var subscription: Subscription
     
-    var current: Bool
     var friends: [FriendModel]
+    
+    var mainVC: SubscriptionsViewController?
     
     init(subscription: Subscription) {
         self.subscription = subscription
         
-        self.current = false
         self.friends = []
     }
 
@@ -28,6 +28,9 @@ struct SubscriptionViewModel: TableCellRepresentable {
         }
         
         cell.configureWithModel(self)
+        if let vc = mainVC {
+            cell.delegate = vc
+        }
 
         return cell
     }
