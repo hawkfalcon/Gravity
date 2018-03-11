@@ -102,10 +102,7 @@ class AddSubscriptionViewController: UIViewController, UICollectionViewDelegate,
             print("Sender has no id")
             return
         }
-        destination.view.hero.modifiers = [.source(heroID: heroID)]
-        destination.view.hero.id = heroID
-        destination.view.hero.modifiers = [.durationMatchLongest]
-        destination.hero.isEnabled = true
+        destination.setHero(heroID: heroID)
     }
 
     // MARK: UICollectionViewDataSource
@@ -154,5 +151,13 @@ extension AddSubscriptionViewController: UICollectionViewDelegateFlowLayout {
         UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5.0
+    }
+}
+
+extension UIViewController {
+    func setHero(heroID: String) {
+        self.view.hero.modifiers = [.source(heroID: heroID), .durationMatchLongest]
+        self.view.hero.id = heroID
+        self.hero.isEnabled = true
     }
 }

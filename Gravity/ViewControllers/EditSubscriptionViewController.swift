@@ -43,7 +43,6 @@ class EditSubscriptionViewController: UITableViewController {
         mainVC?.subscriptionModels.append(SubscriptionViewModel(subscription: subscription))
         
         icon.hero.id = subscription.brand.name
-        print("DONE")
         hero.unwindToViewController(mainVC!)
     }
     

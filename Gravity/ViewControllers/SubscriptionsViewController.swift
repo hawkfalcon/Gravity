@@ -177,7 +177,18 @@ extension SubscriptionsViewController: SwipeTableViewCellDelegate {
         }
         
         let edit = SwipeAction(style: .default, title: "Edit") { _, indexPath in
-            // TODO: edit
+            let editSubscriptionVC = self.storyboard?.instantiateViewController(withIdentifier: "EditSubscriptionViewController") as? EditSubscriptionViewController
+            if let editVC = editSubscriptionVC {
+                editVC.mainVC = self
+                editVC.subscription = self.subscriptionModels[indexPath.row].subscription
+                
+                let heroID = editVC.subscription.brand.name
+                let cell = self.tableView.cellForRow(at: indexPath)
+                cell?.hero.id = heroID
+                editVC.setHero(heroID: heroID)
+
+                self.present(editVC, animated: true, completion: nil)
+            }
         }
         edit.hidesWhenSelected = true
         

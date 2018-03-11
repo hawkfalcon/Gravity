@@ -16,7 +16,7 @@
         <!--Gravity-->
         <scene sceneID="xkS-p0-P8L">
             <objects>
-                <tableViewController id="6Bz-DO-Ruv" customClass="SubscriptionsViewController" customModule="Gravity" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SubscriptionsViewController" id="6Bz-DO-Ruv" customClass="SubscriptionsViewController" customModule="Gravity" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MhJ-uF-3pS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -308,7 +308,7 @@
         <!--Add Subscriptions-->
         <scene sceneID="MMn-yZ-Nxw">
             <objects>
-                <viewController title="Add Subscriptions" id="n4i-b4-Jlb" customClass="AddSubscriptionViewController" customModule="Gravity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddSubscriptionViewController" title="Add Subscriptions" id="n4i-b4-Jlb" customClass="AddSubscriptionViewController" customModule="Gravity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K0p-yd-U0Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -369,7 +369,7 @@
                                         <connections>
                                             <outlet property="icon" destination="PXa-w1-869" id="Dew-e4-eaR"/>
                                             <outlet property="name" destination="A1Q-sT-1pi" id="zS4-AL-bme"/>
-                                            <segue destination="jVY-zL-fVN" kind="presentation" id="yfK-hT-7Ra"/>
+                                            <segue destination="jVY-zL-fVN" kind="presentation" identifier="" id="yfK-hT-7Ra"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -496,7 +496,7 @@
         <!--Add Subscription-->
         <scene sceneID="Jxg-b8-oKl">
             <objects>
-                <tableViewController title="Add Subscription" automaticallyAdjustsScrollViewInsets="NO" id="jVY-zL-fVN" customClass="EditSubscriptionViewController" customModule="Gravity" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EditSubscriptionViewController" title="Add Subscription" automaticallyAdjustsScrollViewInsets="NO" id="jVY-zL-fVN" customClass="EditSubscriptionViewController" customModule="Gravity" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Oop-eY-d1q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
