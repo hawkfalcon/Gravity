@@ -37,8 +37,12 @@ class SubscriptionsViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        total.title = "Total: $\(calculateTotal())/mo"
+        setTotal()
         tableView.reloadData()
+    }
+    
+    func setTotal() {
+        total.title = "Total: $\(calculateTotal())/mo"
     }
     
     func calculateTotal() -> Float {
@@ -106,7 +110,7 @@ class SubscriptionsViewController: UITableViewController {
     
     // when we go to the next view, keep reference to main view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? AddSubscriptionCollectionViewController {
+        if let dest = segue.destination as? AddSubscriptionViewController {
             dest.mainVC = self
         }
     }
@@ -162,37 +166,25 @@ extension SubscriptionsViewController: UICollectionViewDelegate, UICollectionVie
 }
 
 extension SubscriptionsViewController: SwipeTableViewCellDelegate {
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath,
+        for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
-        let delete = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+        let delete = SwipeAction(style: .destructive, title: "Delete") { _, indexPath in
             self.subscriptionModels.remove(at: indexPath.row)
-            //tableView.deleteRows(at: [indexPath], with: .automatic)
-//            DispatchQueue.main.async {
-//                print(self.subscriptionModels.count)
-//                print(indexPath.section)
-//                self.subscriptionModels.remove(at: indexPath.section)
-//                print(self.subscriptionModels.count)
-//                tableView.beginUpdates()
-//                tableView.deleteRows(at: [indexPath], with: .automatic)
-//                tableView.deleteSections([indexPath.section], with: .automatic)
-//                tableView.endUpdates()
-//            }
+            self.setTotal()
         }
-        //configure(action: delete, with: .trash)
         
-        let edit = SwipeAction(style: .default, title: "Edit") { action, indexPath in
-            // handle action by updating model with deletion
+        let edit = SwipeAction(style: .default, title: "Edit") { _, indexPath in
+            // TODO: edit
         }
         edit.hidesWhenSelected = true
-        
-        // customize the action appearance
-        //deleteAction.image = UIImage(named: "delete")
         
         return [delete, edit]
     }
     
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath:
+        IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
         var options = SwipeTableOptions()
         options.expansionStyle = .destructive
         options.transitionStyle = .border
@@ -206,5 +198,11 @@ extension Float {
     func rounded(toPlaces places: Int) -> Float {
         let divisor = pow(10.0, Float(places))
         return (self * divisor).rounded() / divisor
+    }
+}
+
+extension UIColor {
+    convenience init(red: CGFloat, green: CGFloat, blue: CGFloat) {
+        self.init(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1.0)
     }
 }

@@ -1,10 +1,10 @@
 import Foundation
 import UIKit
 
-/* View Model for BaseSubscriptions
-   Associated with Add Cells
+/* View Model for Subscriptions
+ Associated with Add Collection Cells
  */
-struct AddSubscriptionViewModel: TableCellRepresentable {
+struct AddSubscriptionViewModel: CollectionCellRepresentable {
     var subscription: Subscription
     
     init(subscription: Subscription) {
@@ -15,11 +15,10 @@ struct AddSubscriptionViewModel: TableCellRepresentable {
         return "AddSubscriptionCell"
     }
     
-    func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath) -> UITableViewCell {
+    func cellForCollectionView(collectionView: UICollectionView, atIndexPath indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier,
-            for: indexPath) as? AddSubscriptionCell else {
-            fatalError("Cell not found")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? AddSubscriptionCell else {
+                fatalError("Cell not found")
         }
         
         cell.configureWithModel(self)

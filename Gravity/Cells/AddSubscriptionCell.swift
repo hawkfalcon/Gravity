@@ -1,17 +1,13 @@
 import UIKit
 
-class AddSubscriptionCell: UITableViewCell, Configurable {
-    @IBOutlet weak var icon: UIImageView!
-    @IBOutlet weak var name: UILabel!
-    
+class AddSubscriptionCell: UICollectionViewCell, Configurable {
     var model: AddSubscriptionViewModel?
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var icon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
     
     func configureWithModel(_ model: AddSubscriptionViewModel) {
@@ -19,23 +15,13 @@ class AddSubscriptionCell: UITableViewCell, Configurable {
         
         self.name.text = model.subscription.brand.name
         self.icon.image = model.subscription.brand.icon
+        
+        self.backgroundColor = .white
         self.layer.borderColor = model.subscription.brand.color.cgColor
-        self.layer.borderWidth = 1.0
-        self.layer.cornerRadius = 8
+        self.name.textColor = model.subscription.brand.color
+        
+        self.layer.borderWidth = 2.0
+        self.layer.cornerRadius = 2.0
         self.layer.masksToBounds = true
     }
-    
-    override var frame: CGRect {
-        get {
-            return super.frame
-        }
-        set (newFrame) {
-            let inset: CGFloat = 5
-            var frame = newFrame
-            frame.origin.x += inset
-            frame.size.width -= 2 * inset
-            super.frame = frame
-        }
-    }
-
 }
