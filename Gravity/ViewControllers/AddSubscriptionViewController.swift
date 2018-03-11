@@ -1,5 +1,6 @@
 import UIKit
 import DGCollectionViewLeftAlignFlowLayout
+import HGPlaceholders
 import Hero
 import Firebase
 
@@ -10,8 +11,8 @@ class AddSubscriptionViewController: UIViewController, UICollectionViewDelegate,
     
     var mainVC: SubscriptionsViewController?
     
-    @IBOutlet weak var suggestedSubscriptionsView: UICollectionView!
-    @IBOutlet weak var allSubscriptionsView: UICollectionView!
+    @IBOutlet weak var suggestedSubscriptionsView: CollectionView!
+    @IBOutlet weak var allSubscriptionsView: CollectionView!
     
     var addSubscriptionModels = [AddSubscriptionViewModel]()
     
@@ -29,15 +30,15 @@ class AddSubscriptionViewController: UIViewController, UICollectionViewDelegate,
             loadData()
         
         super.viewDidLoad()
-        
     }
 
-    func configure(collectionView: UICollectionView) {
+    func configure(collectionView: CollectionView) {
         collectionView.tag = tag
         tag += 1
         collectionView.delegate = self
         collectionView.dataSource = self
-      
+        
+        collectionView.showLoadingPlaceholder()
         collectionView.collectionViewLayout = DGCollectionViewLeftAlignFlowLayout()
     }
     
@@ -56,7 +57,7 @@ class AddSubscriptionViewController: UIViewController, UICollectionViewDelegate,
                 }
                 
                 self.suggestedSubscriptionsView.reloadData()
-                    //self.allSubscriptionsView.reloadData()
+                self.allSubscriptionsView.reloadData()
                 
             } else {
                 fatalError("No snapshot values :(")

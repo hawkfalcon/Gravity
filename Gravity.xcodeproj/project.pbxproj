@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5404D6732055C5E700A45484 /* AddCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404D6722055C5E700A45484 /* AddCollectionView.swift */; };
 		542FA18B20339ED70006D423 /* TableCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA18A20339ED70006D423 /* TableCellRepresentable.swift */; };
 		542FA18F2033A2180006D423 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA18E2033A2180006D423 /* FriendModel.swift */; };
 		542FA1932033BD3E0006D423 /* CollectionCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FA1922033BD3E0006D423 /* CollectionCellRepresentable.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		13F994D537BBAD819707D6E3 /* Pods-Gravity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gravity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gravity/Pods-Gravity.debug.xcconfig"; sourceTree = "<group>"; };
+		5404D6722055C5E700A45484 /* AddCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionView.swift; sourceTree = "<group>"; };
 		542FA18A20339ED70006D423 /* TableCellRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellRepresentable.swift; sourceTree = "<group>"; };
 		542FA18E2033A2180006D423 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
 		542FA1922033BD3E0006D423 /* CollectionCellRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellRepresentable.swift; sourceTree = "<group>"; };
@@ -112,9 +114,10 @@
 			isa = PBXGroup;
 			children = (
 				545ADA25202677F8009C0EB9 /* SubscriptionsViewController.swift */,
-				54C3B1112026C79900459229 /* EditSubscriptionViewController.swift */,
 				5438D84B2051EBAE006D4D9D /* AddSubscriptionViewController.swift */,
+				54C3B1112026C79900459229 /* EditSubscriptionViewController.swift */,
 				54DC43302027846400AB94FA /* FBLoginViewController.swift */,
+				5404D6722055C5E700A45484 /* AddCollectionView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				5448090F2053380E00D5FB40 /* AddSubscriptionViewModel.swift in Sources */,
 				549A4F93204208D50002E99B /* Configurable.swift in Sources */,
 				542FA18B20339ED70006D423 /* TableCellRepresentable.swift in Sources */,
+				5404D6732055C5E700A45484 /* AddCollectionView.swift in Sources */,
 				545ADA2820267A3A009C0EB9 /* SubscriptionCell.swift in Sources */,
 				542FA1932033BD3E0006D423 /* CollectionCellRepresentable.swift in Sources */,
 				5475902320268B430045DB8B /* SubscriptionViewModel.swift in Sources */,

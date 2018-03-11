@@ -66,6 +66,7 @@ class SubscriptionsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? SubscriptionCell {
             UIView.animate(withDuration: 0.3) {
+                cell.friends.isHidden = !cell.friends.isHidden
                 cell.expandedFriends.isHidden = !cell.expandedFriends.isHidden
             }
             tableView.beginUpdates()
