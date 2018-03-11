@@ -1,5 +1,6 @@
 import UIKit
 import Hero
+import DateTimePicker
 
 class EditSubscriptionViewController: UITableViewController {
 
@@ -11,21 +12,28 @@ class EditSubscriptionViewController: UITableViewController {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var frequency: UITextField!
     
+    var dateSelected: Date!
+    
     var mainVC: SubscriptionsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         name.text = subscription.brand.name
         icon.image = subscription.brand.icon
-        date.text = "02/04/2018"
         price.text = "\(subscription.cost.currency)"
         frequency.text = subscription.type
+        
+        dateSelected = subscription.date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/YYYY"
+        self.date.text = formatter.string(from: dateSelected)
+        
         price.delegate = self
     }
     
     @IBAction func done(_ sender: Any) {
         //subscription.brand.name = name.text
-        //subscription.date = Date()//date.text
+        subscription.date = dateSelected
         if let cost = price.text?.rawFloat {
             subscription.cost = cost
         }
@@ -52,6 +60,10 @@ class EditSubscriptionViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let dateCell = tableView.cellForRow(at: indexPath), dateCell.reuseIdentifier == "date" {
+            showDatePicker()
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     @IBAction func cancel(_ sender: Any) {
@@ -60,6 +72,29 @@ class EditSubscriptionViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
+    }
+}
+
+extension EditSubscriptionViewController: DateTimePickerDelegate {
+    func dateTimePicker(_ picker: DateTimePicker, didSelectDate: Date) {
+        self.date.text = picker.selectedDateString
+    }
+    
+    func showDatePicker() {
+        let min = Calendar.current.previousMonth(months: 2).startOfMonth()
+        let max = Calendar.current.nextMonth(months: 2).endOfMonth()
+        let picker = DateTimePicker.show(selected: dateSelected, minimumDate: min, maximumDate: max)
+        picker.highlightColor = subscription.brand.color
+        picker.includeMonth = true
+        picker.dateFormat = "MM/dd/YYYY"
+        picker.isDatePickerOnly = true
+        picker.completionHandler = { date in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM/dd/YYYY"
+            self.date.text = formatter.string(from: date)
+            self.dateSelected = date
+        }
+        picker.delegate = self
     }
 }
 
@@ -89,5 +124,25 @@ extension String {
         var raw = self.replacingOccurrences(of: "$", with: "")
         raw = raw.replacingOccurrences(of: ",", with: "")
         return Float(raw)
+    }
+}
+
+extension Date {
+    func startOfMonth() -> Date {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
+    }
+    
+    func endOfMonth() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
+    }
+}
+
+extension Calendar {
+    func previousMonth(months: Int) -> Date {
+        return self.date(byAdding: .month, value: months * -1, to: Date())!
+    }
+    
+    func nextMonth(months: Int) -> Date {
+        return self.date(byAdding: .month, value: months, to: Date())!
     }
 }
